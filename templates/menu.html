@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header>
+    <!-- Background image -->
+    <div
+      class="p-5 text-center bg-image"
+      style="
+        background-image: url('#');
+        height: 300px;
+        margin-top: 58px;
+      "
+    >
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.1);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-dark">
+            <h1 class="mb-3">Fast delivery</h1>
+            <h4 class="mb-3">Enjoy your food</h4>
+            <a class="btn btn-outline-dark btn-lg" href="{% url 'menu' %}" role="button"
+            >Order Now</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Background image -->
+</header>
+
+<!--Main layout-->
+<main class="my-5">
+    <div class="container">
+        <form method="POST">
+            {% csrf_token %}
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-md-12 mb-4">
+                    <!--Section: Content-->
+                    <section>
+                        <!--Meal-->
+                        <div class="row">
+                        <div class="col-lg-4 col-md-12 mb-4">
+                            <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
+                                <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Peking(Beijing) Roast Duck</h5>
+                                <p class="card-text">€9.99</p>
+                                <section>
+                                    <!--Grid row-->
+                                    <div class="row">
+                                      <!--Grid column-->
+                                      <div class="col-md-12 mb-2">
+                                        <!-- Accordion wrapper -->
+                                        <div class="accordion" id="accordionExample">
+
+                                          <!-- Single collapse -->
+                                          <div id="headingTwo">
+                                            <h2>
+                                              <button
+                                                      class="btn btn-link btn-block text-start ps-3 collapsed"
+                                                      type="button"
+                                                      data-mdb-toggle="collapse"
+                                                      data-mdb-target="#collapseTwo"
+                                                      aria-expanded="false"
+                                                      aria-controls="collapseTwo"
+                                                      >
+                                                      Description
+                                              </button>
+                                            </h2>
+                                          </div>
+                            
+                                          <div
+                                               id="collapseTwo"
+                                               class="collapse ps-3"
+                                               aria-labelledby="headingTwo"
+                                               data-mdb-parent="#accordionExample"
+                                               >
+                                               Peking duck is a dish from Beijing (Peking) that has been prepared since the Imperial era. The meat is characterized by its thin, crispy skin, with authentic versions of the dish serving mostly the skin and little meat. Ducks bred especially for the dish are seasoned before being roasted in a closed or hung oven. Served with spring onion, cucumber and sweet bean sauce with pancakes. 
+                                               https://en.wikipedia.org/wiki/Peking_duck 
+                                               Chinese: 北京烤鸭 Běijīng kǎoyā /bay-jing kaow-yaa/)                                               
+                                          </div>
+                                          <!-- Single collapse -->
+                                        </div>
+                                        <!-- Accordion wrapper -->
+                                      </div>
+                                      <!--Grid column-->
+                                    </div>
+                                    <!--Grid row-->
+                                </section>
+                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="col-lg-4 col-md-12 mb-4">
+                            <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="https://mdbootstrap.com/img/new/standard/nature/002.jpg" class="img-fluid" />
+                                <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Post title</h5>
+                                <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the
+                                card's content.
+                                </p>
+                                <a href="#!" class="btn btn-primary">Read</a>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="https://mdbootstrap.com/img/new/standard/nature/022.jpg" class="img-fluid" />
+                                <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Post title</h5>
+                                <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the
+                                card's content.
+                                </p>
+                                <a href="#!" class="btn btn-primary">Read</a>
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card">
+                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                                <img src="https://mdbootstrap.com/img/new/standard/nature/035.jpg" class="img-fluid" />
+                                <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Post title</h5>
+                                <p class="card-text">
+                                Some quick example text to build on the card title and make up the bulk of the
+                                card's content.
+                                </p>
+                                <a href="#!" class="btn btn-primary">Read</a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                    </section>
+                    <!--Section: Content-->
+                </div>
+            </div>
+        </form>
+
+        <!-- Pagination -->
+        <nav class="my-4" aria-label="...">
+            <ul class="pagination pagination-circle justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+            </ul>
+        </nav>
+
+    </div>
+</main>
+{% endblock content %}
