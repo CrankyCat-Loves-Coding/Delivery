@@ -20,6 +20,6 @@ from delivery import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Main.as_view(), name='index'),
-    path('menu/', views.Menu.as_view(), name='menu'),
+    path('menuitem/', views.MenuItem.as_view(), name='menuitem'),
     path('cart/', views.Cart.as_view(), name='cart'),
 ]

@@ -30,6 +30,7 @@
     <!-- Table -->
     <div class="d-flex justify-content-center my-5">
         <div class="row col-md-10">
+            {% csrf_token %}
             <table class="table table-striped">
                 <thead class="bg-light">
                   <tr>
@@ -422,9 +423,8 @@
         
                     <div class="card-body">
                     <ul>
-                        <li><strong>Product 1: </strong>$100</li>
-                        <li><strong>Product 2: </strong>$50</li>
-                        <li><strong>Product 2: </strong>$49</li>
+                        <li><strong>Delivery fee: </strong>$100</li>
+                        <li><strong>Service fee: </strong>$50</li>
                     </ul>
                     </div>
         
