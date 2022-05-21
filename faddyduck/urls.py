@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from delivery import views
+from delivery.views import Main, MenuItem, Cart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.Main.as_view(), name='index'),
-    path('menuitem/', views.MenuItem.as_view(), name='menuitem'),
-    path('cart/', views.Cart.as_view(), name='cart'),
+    path('', Main.as_view(), name='index'),
+    path('menu/', MenuItem.as_view(), name='menu'),
+    path('cart/', Cart.as_view(), name='cart'),
 ]
