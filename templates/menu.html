@@ -35,91 +35,233 @@
             <div class="row">
                 <!--Grid column-->
                 <div class="col-md-12 mb-4">
-                    <!--Section: Content-->
+                    <!--Section: Pills-->
                     <section>
-                        <!--Meal-->
-                        <div class="row">
-                            {% for menu in menus %}
-                            <div class="col-lg-4 col-md-12 mb-4">
-                                <div class="card">
-                                <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                                    <img src="{{ menu.image.url }}" class="img-fluid" />
-                                    <a href="#!">
-                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{menu.name}}</h5>
-                                    <p class="card-text">€{{menu.price|floatformat:2}}</p>
-                                    <section>
-                                        <!--Grid row-->
-                                        <div class="row">
-                                        <!--Grid column-->
-                                        <div class="col-md-12 mb-2">
-                                            <!-- Accordion wrapper -->
-                                            <div class="accordion" id="accordionExample">
+                        <!-- Pills navs -->
+                        <ul class="nav nav-pills nav-justified mb-3" id="ex-3" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="ex-3-tab-1" data-mdb-toggle="pill" href="#ex-3-pills-1" role="tab" aria-controls="pills-1" aria-selected="true">Meals</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="ex-3-tab-2" data-mdb-toggle="pill" href="#ex-3-pills-2" role="tab" aria-controls="pills-2" aria-selected="false">Desserts</a>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="ex-3-tab-3" data-mdb-toggle="pill" href="#ex-3-pills-3" role="tab" aria-controls="pills-3" aria-selected="false">Drinks</a>
+                            </li>
+                        </ul>
+                        <!-- Pills navs -->
+                            
+                        <!-- Pills content -->
+                        <div class="tab-content" id="ex-3-content">
+                            <div class="tab-pane fade show active" id="ex-3-pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+                                <!--Meal-->
+                                <div class="row">
+                                    {% for meals in meals %}
+                                    <div class="col-lg-4 col-md-12 mb-4">
+                                        <div class="card">
+                                        <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
+                                            {% if "placeholder" in meals.image.url %}
+                                            <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
+                                            {% else %}
+                                            <img src="{{ meals.image.url }}" class="img-fluid" />
+                                            {% endif %}
+                                            <a href="#!">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{meals.name}}</h5>
+                                            <p class="card-text">€{{meals.price|floatformat:2}}</p>
+                                            <section>
+                                                <!--Grid row-->
+                                                <div class="row">
+                                                <!--Grid column-->
+                                                <div class="col-md-12 mb-2">
+                                                    <!-- Accordion wrapper -->
+                                                    <div class="accordion" id="accordionExample">
 
-                                            <!-- Single collapse -->
-                                            <div id="headingTwo">
-                                                <h2>
-                                                <button
-                                                        class="btn btn-link btn-block text-start ps-3 collapsed"
-                                                        type="button"
-                                                        data-mdb-toggle="collapse"
-                                                        data-mdb-target="#collapseTwo"
-                                                        aria-expanded="false"
-                                                        aria-controls="collapseTwo"
+                                                    <!-- Single collapse -->
+                                                    <div id="headingTwo">
+                                                        <h2>
+                                                        <button
+                                                                class="btn btn-link btn-block text-start ps-3 collapsed"
+                                                                type="button"
+                                                                data-mdb-toggle="collapse"
+                                                                data-mdb-target="#collapseTwo"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseTwo"
+                                                                >
+                                                                Description
+                                                        </button>
+                                                        </h2>
+                                                    </div>
+                                        
+                                                    <div
+                                                        id="collapseTwo"
+                                                        class="collapse ps-3"
+                                                        aria-labelledby="headingTwo"
+                                                        data-mdb-parent="#accordionExample"
                                                         >
-                                                        Description
-                                                </button>
-                                                </h2>
-                                            </div>
-                                
-                                            <div
-                                                id="collapseTwo"
-                                                class="collapse ps-3"
-                                                aria-labelledby="headingTwo"
-                                                data-mdb-parent="#accordionExample"
-                                                >
-                                                {{menu.description}}                                           
-                                            </div>
-                                            <!-- Single collapse -->
-                                            </div>
-                                            <!-- Accordion wrapper -->
+                                                        {{meals.description}}                                           
+                                                    </div>
+                                                    <!-- Single collapse -->
+                                                    </div>
+                                                    <!-- Accordion wrapper -->
+                                                </div>
+                                                <!--Grid column-->
+                                                </div>
+                                                <!--Grid row-->
+                                            </section>
+                                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
                                         </div>
-                                        <!--Grid column-->
                                         </div>
-                                        <!--Grid row-->
-                                    </section>
-                                    <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
-                                </div>
+                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
-                            {% endfor %}
-                        </div>
 
+                            <div class="tab-pane fade" id="ex-3-pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+                                <!--Dessert-->
+                                <div class="row">
+                                    {% for desserts in desserts %}
+                                    <div class="col-lg-4 col-md-12 mb-4">
+                                        <div class="card">
+                                        <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
+                                            {% if "placeholder" in desserts.image.url %}
+                                            <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
+                                            {% else %}
+                                            <img src="{{ desserts.image.url }}" class="img-fluid" />
+                                            {% endif %}
+                                            <a href="#!">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{desserts.name}}</h5>
+                                            <p class="card-text">€{{desserts.price|floatformat:2}}</p>
+                                            <section>
+                                                <!--Grid row-->
+                                                <div class="row">
+                                                <!--Grid column-->
+                                                <div class="col-md-12 mb-2">
+                                                    <!-- Accordion wrapper -->
+                                                    <div class="accordion" id="accordionExample">
+
+                                                    <!-- Single collapse -->
+                                                    <div id="headingTwo">
+                                                        <h2>
+                                                        <button
+                                                                class="btn btn-link btn-block text-start ps-3 collapsed"
+                                                                type="button"
+                                                                data-mdb-toggle="collapse"
+                                                                data-mdb-target="#collapseTwo"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseTwo"
+                                                                >
+                                                                Description
+                                                        </button>
+                                                        </h2>
+                                                    </div>
+                                        
+                                                    <div
+                                                        id="collapseTwo"
+                                                        class="collapse ps-3"
+                                                        aria-labelledby="headingTwo"
+                                                        data-mdb-parent="#accordionExample"
+                                                        >
+                                                        {{desserts.description}}                                           
+                                                    </div>
+                                                    <!-- Single collapse -->
+                                                    </div>
+                                                    <!-- Accordion wrapper -->
+                                                </div>
+                                                <!--Grid column-->
+                                                </div>
+                                                <!--Grid row-->
+                                            </section>
+                                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="ex-3-pills-3" role="tabpanel" aria-labelledby="pills-3-tab">
+                                <!--Drink-->
+                                <div class="row">
+                                    {% for drinks in drinks %}
+                                    <div class="col-lg-4 col-md-12 mb-4">
+                                        <div class="card">
+                                        <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
+                                            {% if "placeholder" in drinks.image.url %}
+                                            <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
+                                            {% else %}
+                                            <img src="{{ drinks.image.url }}" class="img-fluid" />
+                                            {% endif %}
+                                            <a href="#!">
+                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{drinks.name}}</h5>
+                                            <p class="card-text">€{{drinks.price|floatformat:2}}</p>
+                                            <section>
+                                                <!--Grid row-->
+                                                <div class="row">
+                                                <!--Grid column-->
+                                                <div class="col-md-12 mb-2">
+                                                    <!-- Accordion wrapper -->
+                                                    <div class="accordion" id="accordionExample">
+
+                                                    <!-- Single collapse -->
+                                                    <div id="headingTwo">
+                                                        <h2>
+                                                        <button
+                                                                class="btn btn-link btn-block text-start ps-3 collapsed"
+                                                                type="button"
+                                                                data-mdb-toggle="collapse"
+                                                                data-mdb-target="#collapseTwo"
+                                                                aria-expanded="false"
+                                                                aria-controls="collapseTwo"
+                                                                >
+                                                                Description
+                                                        </button>
+                                                        </h2>
+                                                    </div>
+                                        
+                                                    <div
+                                                        id="collapseTwo"
+                                                        class="collapse ps-3"
+                                                        aria-labelledby="headingTwo"
+                                                        data-mdb-parent="#accordionExample"
+                                                        >
+                                                        {{drinks.description}}                                           
+                                                    </div>
+                                                    <!-- Single collapse -->
+                                                    </div>
+                                                    <!-- Accordion wrapper -->
+                                                </div>
+                                                <!--Grid column-->
+                                                </div>
+                                                <!--Grid row-->
+                                            </section>
+                                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pills content -->
+                        
                     </section>
-                    <!--Section: Content-->
+                    <!--Section: Pills-->
+
                 </div>
             </div>
         </form>
-
-        <!-- Pagination -->
-        <nav class="my-4" aria-label="...">
-            <ul class="pagination pagination-circle justify-content-center">
-            <li class="page-item">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-            </ul>
-        </nav>
 
     </div>
 </main>

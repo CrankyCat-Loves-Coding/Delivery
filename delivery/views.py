@@ -13,10 +13,14 @@ class MenuItem(View):
 
     def get(self, request, *args, **kwargs):
        
-        menus = Menu.objects.all()
+        meals = Menu.objects.filter(category__name__contains='Meals')
+        desserts = Menu.objects.filter(category__name__contains='Desserts')
+        drinks = Menu.objects.filter(category__name__contains='Drinks')
 
         context = {
-            'menus': menus
+            'meals': meals,
+            'desserts': desserts,
+            'drinks': drinks,
         }
 
         return render(request, 'menu.html', context)
