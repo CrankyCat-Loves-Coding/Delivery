@@ -41,12 +41,13 @@
                     <th>Total</th>
                   </tr>
                 </thead>
+                {% for item in items %}
                 <tbody>
                   <tr>
                     <td>
                         <div class="d-flex align-items-center">
                             <img
-                                src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+                                src="{{item.menu.image.url}}"
                                 alt=""
                                 style="width: 45px; height: 45px"
                                 class="rounded-circle"
@@ -54,10 +55,10 @@
                         </div>
                     </td>
                     <td>
-                      <p class="fw-normal mb-1">Software engineer</p>
+                      <p class="fw-normal mb-1">{{item.menu.name}}</p>
                     </td>
                     <td>
-                      <span class="badge badge-success rounded-pill d-inline">9.99</span>
+                      <span class="badge badge-success rounded-pill d-inline">€{{item.menu.price|floatformat:2}}</span>
                     </td>
                     <td>
                         <div class="btn-group btn-group-sm shadow-0" role="group">
@@ -65,7 +66,7 @@
                                 <i class="fa-solid fa-caret-up"></i>
                             </button>
                             <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
-                                2
+                                {{item.quantity}}
                             </button>
                             <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
                                 <i class="fa-solid fa-caret-down"></i>
@@ -74,10 +75,11 @@
                     </td>
                     <td>
                       <button type="button" class="btn btn-link btn-sm btn-rounded">
-                        10.99
+                        {{item.get_total}}
                       </button>
                     </td>
                   </tr>
+                  {% endfor %}
                 </tbody>
             </table>
         </div>
@@ -415,26 +417,27 @@
             <div class="col-md-4 mb-4">
                 <!--Section: Summary-->
                 <section>
-        
-                <div class="card">
-                    <div class="card-header bg-white text-center py-3">
-                    <h5 class="mb-0 fw-bold">Summary</h5>
+                    <div class="card">
+                        
+                        <div class="card-header bg-white text-center py-3">
+                        <h5 class="mb-0 fw-bold">Summary</h5>
+                        </div>
+            
+                        <div class="card-body">
+                        <ul>
+                            <li><strong>Delivery fee: </strong>$100</li>
+                            <li><strong>Service fee: </strong>$50</li>
+                            <li><strong>Total items: </strong>{{order.get_cart_items}}</li>
+                        </ul>
+                        </div>
+            
+                        <div
+                            class="card-footer bg-white d-flex justify-content-between py-3"
+                            >
+                            <strong>Total amount:</strong>
+                            <strong>{{order.get_cart_total}}</strong>
+                        </div>
                     </div>
-        
-                    <div class="card-body">
-                    <ul>
-                        <li><strong>Delivery fee: </strong>$100</li>
-                        <li><strong>Service fee: </strong>$50</li>
-                    </ul>
-                    </div>
-        
-                    <div
-                        class="card-footer bg-white d-flex justify-content-between py-3"
-                        >
-                    <strong>Total amount:</strong>
-                    <strong>$199</strong>
-                    </div>
-                </div>
                 
                 <button type="button" class="btn btn-success btn-block mb-4">
                     Place order

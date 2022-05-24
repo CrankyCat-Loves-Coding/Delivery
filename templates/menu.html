@@ -8,20 +8,18 @@
       style="
         background-image: url('#');
         height: 300px;
-        margin-top: 58px;
-      "
+        margin-top: 58px;"
     >
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0.1);">
-        <div class="d-flex justify-content-center align-items-center h-100">
-          <div class="text-dark">
-            <h1 class="mb-3">Fast delivery</h1>
-            <h4 class="mb-3">Enjoy your food</h4>
-            <a class="btn btn-outline-dark btn-lg" href="{% url 'menu' %}" role="button"
-            >Order Now</a
-            >
-          </div>
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.1);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-dark">
+                    <h1 class="mb-3">Fast delivery</h1>
+                    <h4 class="mb-3">Enjoy your food</h4>
+                    <a class="btn btn-outline-dark btn-lg" href="{% url 'menu' %}" role="button"
+                    >Order Now</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <!-- Background image -->
 </header>
@@ -59,61 +57,63 @@
                                     {% for meals in meals %}
                                     <div class="col-lg-4 col-md-12 mb-4">
                                         <div class="card">
-                                        <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
-                                            {% if "placeholder" in meals.image.url %}
-                                            <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
-                                            {% else %}
-                                            <img src="{{ meals.image.url }}" class="img-fluid" />
-                                            {% endif %}
-                                            <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{meals.name}}</h5>
-                                            <p class="card-text">€{{meals.price|floatformat:2}}</p>
-                                            <section>
-                                                <!--Grid row-->
-                                                <div class="row">
-                                                <!--Grid column-->
-                                                <div class="col-md-12 mb-2">
-                                                    <!-- Accordion wrapper -->
-                                                    <div class="accordion" id="accordionExample">
+                                            <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
+                                                {% if "placeholder" in meals.image.url %}
+                                                <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
+                                                {% else %}
+                                                <img src="{{ meals.image.url }}" class="img-fluid" />
+                                                {% endif %}
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
 
-                                                    <!-- Single collapse -->
-                                                    <div id="headingTwo">
-                                                        <h2>
-                                                        <button
-                                                                class="btn btn-link btn-block text-start ps-3 collapsed"
-                                                                type="button"
-                                                                data-mdb-toggle="collapse"
-                                                                data-mdb-target="#collapseTwo"
-                                                                aria-expanded="false"
-                                                                aria-controls="collapseTwo"
-                                                                >
-                                                                Description
-                                                        </button>
-                                                        </h2>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{meals.name}}</h5>
+                                                <p class="card-text">€{{meals.price|floatformat:2}}</p>
+                                                <section>
+                                                    <!--Grid row-->
+                                                    <div class="row">
+                                                        <!--Grid column-->
+                                                        <div class="col-md-12 mb-2">
+                                                            <!-- Accordion wrapper -->
+                                                            <div class="accordion" id="accordionExampleMeal">
+
+                                                                <!-- Single collapse -->
+                                                                <div id="headingTwoMeal">
+                                                                    <h2>
+                                                                        <button
+                                                                            class="btn btn-link btn-block text-start ps-3 collapsed"
+                                                                            type="button"
+                                                                            data-mdb-toggle="collapse"
+                                                                            data-mdb-target="#collapseTwoMeal"
+                                                                            aria-expanded="false"
+                                                                            aria-controls="collapseTwoMeal"
+                                                                        >
+                                                                        Description
+                                                                        </button>
+                                                                    </h2>
+                                                                </div>
+                                                    
+                                                                <div
+                                                                    id="collapseTwoMeal"
+                                                                    class="collapse ps-3"
+                                                                    aria-labelledby="headingTwoMeal"
+                                                                    data-mdb-parent="#accordionExampleMeal"
+                                                                    >
+                                                                    {{meals.description}}                                           
+                                                                </div>
+                                                                <!-- Single collapse -->
+                                                                
+                                                            </div>
+                                                            <!-- Accordion wrapper -->
+                                                        </div>
+                                                        <!--Grid column-->
                                                     </div>
-                                        
-                                                    <div
-                                                        id="collapseTwo"
-                                                        class="collapse ps-3"
-                                                        aria-labelledby="headingTwo"
-                                                        data-mdb-parent="#accordionExample"
-                                                        >
-                                                        {{meals.description}}                                           
-                                                    </div>
-                                                    <!-- Single collapse -->
-                                                    </div>
-                                                    <!-- Accordion wrapper -->
-                                                </div>
-                                                <!--Grid column-->
-                                                </div>
-                                                <!--Grid row-->
-                                            </section>
-                                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
-                                        </div>
+                                                    <!--Grid row-->
+                                                </section>
+                                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                                            </div>
                                         </div>
                                     </div>
                                     {% endfor %}
@@ -126,61 +126,61 @@
                                     {% for desserts in desserts %}
                                     <div class="col-lg-4 col-md-12 mb-4">
                                         <div class="card">
-                                        <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
-                                            {% if "placeholder" in desserts.image.url %}
-                                            <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
-                                            {% else %}
-                                            <img src="{{ desserts.image.url }}" class="img-fluid" />
-                                            {% endif %}
-                                            <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{desserts.name}}</h5>
-                                            <p class="card-text">€{{desserts.price|floatformat:2}}</p>
-                                            <section>
-                                                <!--Grid row-->
-                                                <div class="row">
-                                                <!--Grid column-->
-                                                <div class="col-md-12 mb-2">
-                                                    <!-- Accordion wrapper -->
-                                                    <div class="accordion" id="accordionExample">
+                                            <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
+                                                {% if "placeholder" in desserts.image.url %}
+                                                <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
+                                                {% else %}
+                                                <img src="{{ desserts.image.url }}" class="img-fluid" />
+                                                {% endif %}
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{desserts.name}}</h5>
+                                                <p class="card-text">€{{desserts.price|floatformat:2}}</p>
+                                                <section>
+                                                    <!--Grid row-->
+                                                    <div class="row">
+                                                        <!--Grid column-->
+                                                        <div class="col-md-12 mb-2">
+                                                            <!-- Accordion wrapper -->
+                                                            <div class="accordion" id="accordionExampleDessert">
 
-                                                    <!-- Single collapse -->
-                                                    <div id="headingTwo">
-                                                        <h2>
-                                                        <button
-                                                                class="btn btn-link btn-block text-start ps-3 collapsed"
-                                                                type="button"
-                                                                data-mdb-toggle="collapse"
-                                                                data-mdb-target="#collapseTwo"
-                                                                aria-expanded="false"
-                                                                aria-controls="collapseTwo"
+                                                                <!-- Single collapse -->
+                                                                <div id="headingTwoDessert">
+                                                                    <h2>
+                                                                        <button
+                                                                            class="btn btn-link btn-block text-start ps-3 collapsed"
+                                                                            type="button"
+                                                                            data-mdb-toggle="collapse"
+                                                                            data-mdb-target="#collapseTwoDessert"
+                                                                            aria-expanded="false"
+                                                                            aria-controls="collapseTwoDessert"
+                                                                        >
+                                                                        Description
+                                                                        </button>
+                                                                    </h2>
+                                                                </div>
+                                                    
+                                                                <div
+                                                                    id="collapseTwoDessert"
+                                                                    class="collapse ps-3"
+                                                                    aria-labelledby="headingTwoDessert"
+                                                                    data-mdb-parent="#accordionExampleDessert"
                                                                 >
-                                                                Description
-                                                        </button>
-                                                        </h2>
+                                                                {{desserts.description}}                                           
+                                                                </div>
+                                                                <!-- Single collapse -->
+                                                            </div>
+                                                            <!-- Accordion wrapper -->
+                                                        </div>
+                                                        <!--Grid column-->
                                                     </div>
-                                        
-                                                    <div
-                                                        id="collapseTwo"
-                                                        class="collapse ps-3"
-                                                        aria-labelledby="headingTwo"
-                                                        data-mdb-parent="#accordionExample"
-                                                        >
-                                                        {{desserts.description}}                                           
-                                                    </div>
-                                                    <!-- Single collapse -->
-                                                    </div>
-                                                    <!-- Accordion wrapper -->
-                                                </div>
-                                                <!--Grid column-->
-                                                </div>
-                                                <!--Grid row-->
-                                            </section>
-                                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
-                                        </div>
+                                                    <!--Grid row-->
+                                                </section>
+                                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                                            </div>
                                         </div>
                                     </div>
                                     {% endfor %}
@@ -193,61 +193,61 @@
                                     {% for drinks in drinks %}
                                     <div class="col-lg-4 col-md-12 mb-4">
                                         <div class="card">
-                                        <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
-                                            {% if "placeholder" in drinks.image.url %}
-                                            <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
-                                            {% else %}
-                                            <img src="{{ drinks.image.url }}" class="img-fluid" />
-                                            {% endif %}
-                                            <a href="#!">
-                                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{drinks.name}}</h5>
-                                            <p class="card-text">€{{drinks.price|floatformat:2}}</p>
-                                            <section>
-                                                <!--Grid row-->
-                                                <div class="row">
-                                                <!--Grid column-->
-                                                <div class="col-md-12 mb-2">
-                                                    <!-- Accordion wrapper -->
-                                                    <div class="accordion" id="accordionExample">
+                                            <div class="bg-image hover-overlay ripple text-center" data-mdb-ripple-color="light">
+                                                {% if "placeholder" in drinks.image.url %}
+                                                <img src="https://res.cloudinary.com/dqj8itdfg/image/upload/v1653176701/Delivery_man_wmlxnp.jpg" class="img-fluid" />
+                                                {% else %}
+                                                <img src="{{ drinks.image.url }}" class="img-fluid" />
+                                                {% endif %}
+                                                <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                </a>
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{drinks.name}}</h5>
+                                                <p class="card-text">€{{drinks.price|floatformat:2}}</p>
+                                                <section>
+                                                    <!--Grid row-->
+                                                    <div class="row">
+                                                        <!--Grid column-->
+                                                        <div class="col-md-12 mb-2">
+                                                            <!-- Accordion wrapper -->
+                                                            <div class="accordion" id="accordionExampleDrink">
 
-                                                    <!-- Single collapse -->
-                                                    <div id="headingTwo">
-                                                        <h2>
-                                                        <button
-                                                                class="btn btn-link btn-block text-start ps-3 collapsed"
-                                                                type="button"
-                                                                data-mdb-toggle="collapse"
-                                                                data-mdb-target="#collapseTwo"
-                                                                aria-expanded="false"
-                                                                aria-controls="collapseTwo"
+                                                                <!-- Single collapse -->
+                                                                <div id="headingTwoDrink">
+                                                                    <h2>
+                                                                        <button
+                                                                            class="btn btn-link btn-block text-start ps-3 collapsed"
+                                                                            type="button"
+                                                                            data-mdb-toggle="collapse"
+                                                                            data-mdb-target="#collapseTwoDrink"
+                                                                            aria-expanded="false"
+                                                                            aria-controls="collapseTwoDrink"
+                                                                        >
+                                                                        Description
+                                                                        </button>
+                                                                    </h2>
+                                                                </div>
+                                                    
+                                                                <div
+                                                                    id="collapseTwoDrink"
+                                                                    class="collapse ps-3"
+                                                                    aria-labelledby="headingTwoDrink"
+                                                                    data-mdb-parent="#accordionExampleDrink"
                                                                 >
-                                                                Description
-                                                        </button>
-                                                        </h2>
+                                                                {{drinks.description}}                                           
+                                                                </div>
+                                                                <!-- Single collapse -->
+                                                            </div>
+                                                            <!-- Accordion wrapper -->
+                                                        </div>
+                                                        <!--Grid column-->
                                                     </div>
-                                        
-                                                    <div
-                                                        id="collapseTwo"
-                                                        class="collapse ps-3"
-                                                        aria-labelledby="headingTwo"
-                                                        data-mdb-parent="#accordionExample"
-                                                        >
-                                                        {{drinks.description}}                                           
-                                                    </div>
-                                                    <!-- Single collapse -->
-                                                    </div>
-                                                    <!-- Accordion wrapper -->
-                                                </div>
-                                                <!--Grid column-->
-                                                </div>
-                                                <!--Grid row-->
-                                            </section>
-                                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
-                                        </div>
+                                                    <!--Grid row-->
+                                                </section>
+                                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                                            </div>
                                         </div>
                                     </div>
                                     {% endfor %}
@@ -255,14 +255,12 @@
                             </div>
                         </div>
                         <!-- Pills content -->
-                        
+
                     </section>
                     <!--Section: Pills-->
-
                 </div>
             </div>
         </form>
-
     </div>
 </main>
 {% endblock content %}

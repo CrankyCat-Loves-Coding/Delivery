@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View
-from .models import Menu
+from .models import Menu, Order, OrderItem
 
 class Main(View):
 
@@ -27,6 +27,21 @@ class MenuItem(View):
  
 
 class Cart(View):
+    model = Order
+    model = OrderItem
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'cart.html')
+    def get(self, request, *args, **kwargs): 
+
+        if request.user.is_authenticated:
+            customer = request.user.customer
+            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            items = order.orderitem_set.all()
+        else:
+            items = []
+        
+        context = {
+            'items': items,
+            'order': order
+        }
+
+        return render(request, 'cart.html', context)
