@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from django.views import View
 from .models import Menu, Order, OrderItem
+import json
 
 class Main(View):
 
@@ -38,6 +40,7 @@ class Cart(View):
             items = order.orderitem_set.all()
         else:
             items = []
+            order = {'get_cart_total': 0, 'get_cart_item':0 }
         
         context = {
             'items': items,
@@ -45,3 +48,15 @@ class Cart(View):
         }
 
         return render(request, 'cart.html', context)
+
+
+class UpdateCart(View):
+
+    def post(self, request, *args, **kwargs):
+        data = json.loads(request.body)
+        menuId = data['menuId']
+        action = data['action']
+
+        print('action:', action)
+        print('menuId:', menuId)
+        return JsonResponse('Item was added', safe=False)

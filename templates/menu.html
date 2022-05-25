@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <header>
@@ -112,7 +113,15 @@
                                                     </div>
                                                     <!--Grid row-->
                                                 </section>
-                                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                                                <button 
+                                                    data-menu="{{menu.id}}"
+                                                    data-action="add"
+                                                    type="button" 
+                                                    class="btn btn-light update-cart" 
+                                                    data-mdb-ripple-color="dark"
+                                                    >
+                                                    Add to Cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -179,7 +188,15 @@
                                                     </div>
                                                     <!--Grid row-->
                                                 </section>
-                                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                                                <button 
+                                                    data-menu="{{menu.id}}"
+                                                    data-action="add"
+                                                    type="button" 
+                                                    class="btn btn-light update-cart" 
+                                                    data-mdb-ripple-color="dark"
+                                                >
+                                                    Add to Cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -246,7 +263,15 @@
                                                     </div>
                                                     <!--Grid row-->
                                                 </section>
-                                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">Add to Cart</button>
+                                                <button 
+                                                    data-menu="{{menu.id}}"
+                                                    data-action="add"
+                                                    type="button" 
+                                                    class="btn btn-light update-cart" 
+                                                    data-mdb-ripple-color="dark"
+                                                >
+                                                    Add to Cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
