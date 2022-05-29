@@ -50,7 +50,7 @@ class Cart(View):
         return render(request, 'cart.html', context)
 
 
-class UpdateCart(View):
+class UpdateItem(View):
 
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
