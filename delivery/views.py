@@ -3,7 +3,6 @@ from django.http import JsonResponse
 from django.views import View
 from .models import Menu, Order, OrderItem
 import json
-
 class Main(View):
 
     def get(self, request, *args, **kwargs):
@@ -50,7 +49,7 @@ class Cart(View):
         return render(request, 'cart.html', context)
 
 
-class UpdateItem(View):
+class UpdateCart(View):
 
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
@@ -59,4 +58,28 @@ class UpdateItem(View):
 
         print('action:', action)
         print('menuId:', menuId)
+
+        customer = request.user.customer
+        menu = Menu.objects.get(id=menuId)
+        order, created = Order.objects.get_or_create(
+            customer=customer,
+            complete=False
+        )
+
+        orderItem, created = OrderItem.objects.get_or_create(
+            order=order,
+            menu=menu
+        )
+
+        if action == 'add':
+            orderItem.quantity = (orderItem.quantity + 1)
+        elif action == 'remove':
+            orderItem.quantity = (orderItem.quantity - 1)
+
+        orderItem.save()
+        
+        if orderItem.quantity <= 0:
+            orderItem.delete()
+
+
         return JsonResponse('Item was added', safe=False)

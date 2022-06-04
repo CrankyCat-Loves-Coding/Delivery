@@ -2,9 +2,16 @@ var updateBtns = document.getElementsByClassName('update-cart')
 
 for(i = 0; i < updateBtns.length; i++){
     updateBtns[i].addEventListener('click', function(){
-        var menuId = this.dataset.menu
+        var mealsId = this.dataset.meals
+        var dessertsId = this.dataset.desserts
+        var drinksId = this.dataset.drinks
         var action = this.dataset.action
-        console.log('menuId:', menuId, 'action:', action)
+        console.log(
+            'mealsId:', mealsId,
+            'dessertsId:', dessertsId,
+            'drinksId:', drinksId,
+            'action:', action,
+        )( )
 
         console.log('USER:', user)
         if(user === 'AnonymousUser'){
@@ -18,7 +25,7 @@ for(i = 0; i < updateBtns.length; i++){
 function updateUserOrder(menuId, action){
     console.log('User is logged in, sending data...')
 
-    var url = '/update_item/'
+    var url = '/update_cart/'
 
     fetch(url,{
         method: 'POST',
