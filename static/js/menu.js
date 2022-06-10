@@ -11,7 +11,7 @@ for(i = 0; i < updateBtns.length; i++){
             'dessertsId:', dessertsId,
             'drinksId:', drinksId,
             'action:', action,
-        )( )
+        )
 
         console.log('USER:', user)
         if(user === 'AnonymousUser'){
