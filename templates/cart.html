@@ -62,13 +62,25 @@
                     </td>
                     <td>
                         <div class="btn-group btn-group-sm shadow-0" role="group">
-                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
+                            <button 
+                                type="button" 
+                                class="btn btn-light update-cart" 
+                                data-mdb-ripple-color="dark"
+                                data-menu={{item.menu.id}}
+                                data-action="add"
+                            >
                                 <i class="fa-solid fa-caret-up"></i>
                             </button>
                             <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
                                 {{item.quantity}}
                             </button>
-                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
+                            <button 
+                                type="button" 
+                                class="btn btn-light update-cart" 
+                                data-mdb-ripple-color="dark"
+                                data-menu={{item.menu.id}}
+                                data-action="remove"
+                            >
                                 <i class="fa-solid fa-caret-down"></i>
                             </button>
                           </div>
