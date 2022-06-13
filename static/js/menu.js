@@ -2,14 +2,16 @@ var updateBtns = document.getElementsByClassName('update-cart')
 
 for(i = 0; i < updateBtns.length; i++){
     updateBtns[i].addEventListener('click', function(){
-        var mealsId = this.dataset.meals
-        var dessertsId = this.dataset.desserts
-        var drinksId = this.dataset.drinks
+        // var mealsId = this.dataset.meals
+        // var dessertsId = this.dataset.desserts
+        // var drinksId = this.dataset.drinks
+        var menuId = this.dataset.menu
         var action = this.dataset.action
         console.log(
-            'mealsId:', mealsId,
-            'dessertsId:', dessertsId,
-            'drinksId:', drinksId,
+            // 'mealsId:', mealsId,
+            // 'dessertsId:', dessertsId,
+            // 'drinksId:', drinksId,
+            'menuId:', menuId,
             'action:', action,
         )
 
@@ -17,7 +19,13 @@ for(i = 0; i < updateBtns.length; i++){
         if(user === 'AnonymousUser'){
             console.log('Not logged in')
         }else{
-            updateUserOrder(menuId, action)
+            updateUserOrder(
+                menuId, action
+                // mealsId,
+                // dessertsId,
+                // drinksId,
+                // action,
+            )
         }
     })
 }
