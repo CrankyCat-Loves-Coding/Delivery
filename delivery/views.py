@@ -7,7 +7,21 @@ import json
 class Main(View):
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+        if request.user.is_authenticated:
+            customer = request.user.customer
+            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            items = order.orderitem_set.all()
+            cartItems = order.get_cart_items
+        else:
+            items = []
+            order = {'get_cart_total': 0, 'get_cart_item':0 }
+            cartItems = order['get_cart_items']
+        
+        context = {
+            'cartItems': cartItems
+        }
+
+        return render(request, 'index.html', context)
 
 
 class MenuItem(View):
@@ -19,10 +33,21 @@ class MenuItem(View):
         desserts = Menu.objects.filter(category__name__contains='Desserts')
         drinks = Menu.objects.filter(category__name__contains='Drinks')
 
+        if request.user.is_authenticated:
+            customer = request.user.customer
+            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            items = order.orderitem_set.all()
+            cartItems = order.get_cart_items
+        else:
+            items = []
+            order = {'get_cart_total': 0, 'get_cart_item':0 }
+            cartItems = order['get_cart_items']
+
         context = {
             'meals': meals,
             'desserts': desserts,
             'drinks': drinks,
+            'cartItems': cartItems
         }
 
         return render(request, 'menu.html', context)
@@ -38,13 +63,16 @@ class Cart(View):
             customer = request.user.customer
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
             items = order.orderitem_set.all()
+            cartItems = order.get_cart_items
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
+            cartItems = order['get_cart_items']
         
         context = {
             'items': items,
-            'order': order
+            'order': order,
+            'cartItems': cartItems
         }
 
         return render(request, 'cart.html', context)
