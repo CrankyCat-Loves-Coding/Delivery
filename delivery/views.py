@@ -55,9 +55,6 @@ class UpdateCart(View):
     def post(self, request, *args, **kwargs):
         data = json.loads(request.body)
         menuId = data['menuId'] 
-        # (KeyError: 'menuId')
-        # mealsId = data['mealsId'] 
-        # (KeyError: 'mealsId')
         action = data['action']
 
         print('action:', action)
@@ -65,7 +62,6 @@ class UpdateCart(View):
 
         customer = request.user.customer
         menu = Menu.objects.get(id=menuId)
-        # meals = Menu.objects.get(id=mealsId)
         order, created = Order.objects.get_or_create(
             customer=customer,
             complete=False
