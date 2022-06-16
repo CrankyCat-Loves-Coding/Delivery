@@ -11,17 +11,17 @@ class Main(View):
             customer = request.user.customer
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
             items = order.orderitem_set.all()
-            cartItems = order.get_cart_items
+            # cartItems = order.get_cart_items
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
-            cartItems = order['get_cart_items']
+            # cartItems = order['get_cart_items']
         
-        context = {
-            'cartItems': cartItems
-        }
+        # context = {
+        #     'cartItems': cartItems
+        # }
 
-        return render(request, 'index.html', context)
+        return render(request, 'index.html')
 
 
 class MenuItem(View):
@@ -37,17 +37,17 @@ class MenuItem(View):
             customer = request.user.customer
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
             items = order.orderitem_set.all()
-            cartItems = order.get_cart_items
+            # cartItems = order.get_cart_items
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
-            cartItems = order['get_cart_items']
+            # cartItems = order['get_cart_items']
 
         context = {
             'meals': meals,
             'desserts': desserts,
             'drinks': drinks,
-            'cartItems': cartItems
+            # 'cartItems': cartItems
         }
 
         return render(request, 'menu.html', context)
@@ -63,16 +63,16 @@ class Cart(View):
             customer = request.user.customer
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
             items = order.orderitem_set.all()
-            cartItems = order.get_cart_items
+            # cartItems = order.get_cart_items
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
-            cartItems = order['get_cart_items']
+            # cartItems = order['get_cart_items']
         
         context = {
             'items': items,
             'order': order,
-            'cartItems': cartItems
+            # 'cartItems': cartItems
         }
 
         return render(request, 'cart.html', context)
