@@ -1,0 +1,39 @@
+/* index landing container and image */
+.index-landing-container {
+    background-image: url('https://res.cloudinary.com/dqj8itdfg/image/upload/v1651007193/wok-665kb_ip9ist.webp');
+    height: 600px;
+    margin-top: 58px;
+}
+
+.index-image-bg {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* other landing container and image */
+.landing-container {
+    height: 300px;
+    margin-top: 58px;
+}
+
+.menu-image {
+    background-image: url('#');
+}
+
+.cart-image {
+    background-image: url('#');
+}
+
+.image-bg {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* like section */
+.card-bg {
+    background-color: rgba(251, 251, 251, 0.15);
+}
+
+/* cart html */
+.item-image {
+    width: 150px; 
+    height: 150px;
+}

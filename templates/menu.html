@@ -1,17 +1,10 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
 
 <header>
     <!-- Background image -->
-    <div
-      class="p-5 text-center bg-image"
-      style="
-        background-image: url('#');
-        height: 300px;
-        margin-top: 58px;"
-    >
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.1);">
+    <div class="p-5 text-center bg-image landing-container menu-image">
+        <div class="mask image-bg">
             <div class="d-flex justify-content-center align-items-center h-100">
                 <div class="text-dark">
                     <h1 class="mb-3">Fast delivery</h1>
@@ -65,7 +58,7 @@
                                                 <img src="{{ meals.image.url }}" class="img-fluid" />
                                                 {% endif %}
                                                 <a href="#!">
-                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                    <div class="mask card-bg"></div>
                                                 </a>
                                             </div>
 
@@ -142,7 +135,7 @@
                                                 <img src="{{ desserts.image.url }}" class="img-fluid" />
                                                 {% endif %}
                                                 <a href="#!">
-                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                    <div class="mask card-bg"></div>
                                                 </a>
                                             </div>
                                             <div class="card-body">
@@ -217,7 +210,7 @@
                                                 <img src="{{ drinks.image.url }}" class="img-fluid" />
                                                 {% endif %}
                                                 <a href="#!">
-                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                    <div class="mask card-bg"></div>
                                                 </a>
                                             </div>
                                             <div class="card-body">

@@ -1,15 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <header>
   <!-- Background image -->
-  <div
-    class="p-5 text-center bg-image"
-    style="
-      background-image: url('https://res.cloudinary.com/dqj8itdfg/image/upload/v1651007193/wok-665kb_ip9ist.webp');
-      height: 600px;
-      margin-top: 58px;"
-  >
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+  <div class="p-5 text-center bg-image index-landing-container">
+    <div class="mask index-image-bg">
       <div class="d-flex justify-content-center align-items-center h-100">
         <div class="text-white">
           <h1 class="mb-3">Love what you eat</h1>
@@ -105,7 +100,7 @@
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
               <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                <div class="mask card-bg"></div>
               </a>
             </div>
             <div class="card-body">
@@ -114,7 +109,7 @@
                 Some quick example text to build on the card title and make up the bulk of the
                 card's content.
               </p>
-              <a href="#!" class="btn btn-primary" style="background-color: #4f4f4f;">Like</a>
+              <a href="#!" class="btn btn-primary">Like</a>
             </div>
           </div>
         </div>
@@ -124,7 +119,7 @@
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
               <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                <div class="mask card-bg"></div>
               </a>
             </div>
             <div class="card-body">
@@ -133,7 +128,7 @@
                 Some quick example text to build on the card title and make up the bulk of the
                 card's content.
               </p>
-              <a href="#!" class="btn btn-primary" style="background-color: #4f4f4f;">Button</a>
+              <a href="#!" class="btn btn-primary">Button</a>
             </div>
           </div>
         </div>
@@ -143,7 +138,7 @@
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
               <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" />
               <a href="#!">
-                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                <div class="mask"></div>
               </a>
             </div>
             <div class="card-body">
@@ -152,7 +147,7 @@
                 Some quick example text to build on the card title and make up the bulk of the
                 card's content.
               </p>
-              <a href="#!" class="btn btn-primary" style="background-color: #4f4f4f;">Button</a>
+              <a href="#!" class="btn btn-primary">Button</a>
             </div>
           </div>
         </div>
@@ -200,7 +195,6 @@
             <!-- Checkbox -->
             <div class="form-check d-flex justify-content-center mb-4">
               <input class="form-check-input me-2" 
-              style="background-color: #4f4f4f; border-color:#4f4f4f;"
               type="checkbox" value="" id="form2Example3" checked />
               <label class="form-check-label" for="form2Example3">
                 Subscribe to our newsletter
@@ -208,7 +202,7 @@
             </div>
 
             <!-- Submit button -->
-            <button type="submit" class="btn btn-dark btn-block mb-4" style="background-color: #4f4f4f;">
+            <button type="submit" class="btn btn-primary btn-block mb-4">
               Sign up
             </button>
 

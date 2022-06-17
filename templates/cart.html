@@ -3,15 +3,8 @@
 
 <header>
     <!-- Background image -->
-    <div
-      class="p-5 text-center bg-image"
-      style="
-        background-image: url('#');
-        height: 300px;
-        margin-top: 58px;
-      "
-    >
-      <div class="mask" style="background-color: rgba(0, 0, 0, 0.1);">
+    <div class="p-5 text-center bg-image landing-container cart-image">
+      <div class="mask image-bg">
         <div class="d-flex justify-content-center align-items-center h-100">
           <div class="text-dark">
             <h1 class="mb-3">Checkout</h1>
@@ -32,9 +25,9 @@
         <div class="row col-md-10">
             {% csrf_token %}
             <table class="table table-striped">
-                <thead class="bg-light">
+                <thead class="bg-light text-center">
                   <tr>
-                    <th>Image</th>
+                    <th>Product</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
@@ -42,54 +35,53 @@
                   </tr>
                 </thead>
                 {% for item in items %}
-                <tbody>
-                  <tr>
-                    <td>
-                        <div class="d-flex align-items-center">
-                            <img
-                                src="{{item.menu.image.url}}"
-                                alt=""
-                                style="width: 45px; height: 45px"
-                                class="rounded-circle"
-                            />
-                        </div>
-                    </td>
-                    <td>
-                      <p class="fw-normal mb-1">{{item.menu.name}}</p>
-                    </td>
-                    <td>
-                      <span class="badge badge-success rounded-pill d-inline">€{{item.menu.price|floatformat:2}}</span>
-                    </td>
-                    <td>
-                        <div class="btn-group btn-group-sm shadow-0" role="group">
-                            <button 
-                                type="button" 
-                                class="btn btn-light update-cart" 
-                                data-mdb-ripple-color="dark"
-                                data-menu={{item.menu.id}}
-                                data-action="add"
-                            >
-                                <i class="fa-solid fa-caret-up"></i>
+                <tbody class="text-center align-middle">
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img
+                                    src="{{item.menu.image.url}}"
+                                    alt=""
+                                    class="rounded-circle item-image"
+                                />
+                            </div>
+                        </td>
+                        <td>
+                            <p class="fw-normal mb-1">{{item.menu.name}}</p>
+                        </td>
+                        <td>
+                            <span class="badge badge-success rounded-pill d-inline">€{{item.menu.price|floatformat:2}}</span>
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm shadow-0" role="group">
+                                <button 
+                                    type="button" 
+                                    class="btn btn-light update-cart" 
+                                    data-mdb-ripple-color="dark"
+                                    data-menu={{item.menu.id}}
+                                    data-action="add"
+                                >
+                                    <i class="fa-solid fa-caret-up"></i>
+                                </button>
+                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
+                                    {{item.quantity}}
+                                </button>
+                                <button 
+                                    type="button" 
+                                    class="btn btn-light update-cart" 
+                                    data-mdb-ripple-color="dark"
+                                    data-menu={{item.menu.id}}
+                                    data-action="remove"
+                                >
+                                    <i class="fa-solid fa-caret-down"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                {{item.get_total}}
                             </button>
-                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
-                                {{item.quantity}}
-                            </button>
-                            <button 
-                                type="button" 
-                                class="btn btn-light update-cart" 
-                                data-mdb-ripple-color="dark"
-                                data-menu={{item.menu.id}}
-                                data-action="remove"
-                            >
-                                <i class="fa-solid fa-caret-down"></i>
-                            </button>
-                          </div>
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-link btn-sm btn-rounded">
-                        {{item.get_total}}
-                      </button>
-                    </td>
+                        </td>
                   </tr>
                   {% endfor %}
                 </tbody>
