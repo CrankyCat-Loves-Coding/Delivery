@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header>
+    <!-- Background image -->
+    <div class="p-5 text-center bg-image landing-container menu-image">
+        <div class="mask image-bg">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-dark">
+                    <h1 class="mb-3">Fast delivery</h1>
+                    <h4 class="mb-3">Enjoy your food</h4>
+                    <a class="btn btn-outline-dark btn-lg" href="{% url 'menu' %}" role="button"
+                    >Order Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Background image -->
+</header>
+
+{% endblock content %}

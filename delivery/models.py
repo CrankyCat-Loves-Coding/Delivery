@@ -37,7 +37,7 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.id)   
     
     @property
     def get_cart_total(self):
@@ -67,11 +67,12 @@ class OrderItem(models.Model):
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+    email = models.CharField(max_length=200, null=False)
     address = models.CharField(max_length=200, null=False)
-    city = models.CharField(max_length=200, null=False)
-    state = models.CharField(max_length=200, null=False)
-    zipcode = models.CharField(max_length=200, null=False)
+    postcode = models.CharField(max_length=200, null=False)
+    phone = models.CharField(max_length=200, null=False)
     data_added = models.DateTimeField(auto_now_add=True)
+    is_paid = models.BooleanField(default=False)
 
     def __str__(self):
         return self.address

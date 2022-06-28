@@ -1,3 +1,5 @@
+// monitor what has been clicked 
+
 var updateBtns = document.getElementsByClassName('update-cart')
 
 for(i = 0; i < updateBtns.length; i++){
@@ -20,6 +22,8 @@ for(i = 0; i < updateBtns.length; i++){
     })
 }
 
+// update cart
+
 function updateUserOrder(menuId, action){
     console.log('User is logged in, sending data...')
 
@@ -40,6 +44,6 @@ function updateUserOrder(menuId, action){
 
     .then((data) =>{
         console.log('data:', data)
-        // location.reload()
+        location.reload()
     })
 }

@@ -3,19 +3,23 @@ from django.http import JsonResponse
 from django.views import View
 from .models import Menu, Order, OrderItem
 import json
+import datetime
 
 class Main(View):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             customer = request.user.customer
-            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            order, created = Order.objects.get_or_create(
+                customer=customer,
+                complete=False
+            )
             items = order.orderitem_set.all()
-            # cartItems = order.get_cart_items
+            cartItems = order.get_cart_items
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
-            # cartItems = order['get_cart_items']
+            #cartItems = order['get_cart_items']
         
         # context = {
         #     'cartItems': cartItems
@@ -35,7 +39,10 @@ class MenuItem(View):
 
         if request.user.is_authenticated:
             customer = request.user.customer
-            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            order, created = Order.objects.get_or_create(
+                customer=customer,
+                complete=False
+            )
             items = order.orderitem_set.all()
             # cartItems = order.get_cart_items
         else:
@@ -88,11 +95,24 @@ class UpdateCart(View):
         print('action:', action)
         print('menuId:', menuId)
 
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        address = request.POST.get('address')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+
         customer = request.user.customer
         menu = Menu.objects.get(id=menuId)
         order, created = Order.objects.get_or_create(
             customer=customer,
-            complete=False
+            complete=False,
+            first_name=first_name,
+            last_name=last_name,
+            address=address,
+            email=email,
+            phone=phone,
+            message=message
         )
 
         orderItem, created = OrderItem.objects.get_or_create(
@@ -110,5 +130,23 @@ class UpdateCart(View):
         if orderItem.quantity <= 0:
             orderItem.delete()
 
-
         return JsonResponse('Item was added', safe=False)
+
+class OrderConfirmation(View):
+
+    def get(self, request, pk, *args, **kwargs):
+        order = Menu.objects.get(pk=pk)
+
+        context = {
+            'pk': order.pk,
+            'price': order.price
+        }
+        return render(request, 'order_confirmation.html', context)
+
+    def post(self, request, pk, *args, **kwargs):
+        print(request.body)
+
+
+class OrderPayConfirmation(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'order_pay_confirmation.html')

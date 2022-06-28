@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 
 <header>
@@ -96,322 +97,108 @@
             <div class="col-md-8 mb-4">
                 <!--Section: Checkout form-->
                 <section class="shadow-5 p-4">
-                <form>
+                <form id="form">
                     <!-- 2 column grid layout with text inputs for the first and last names -->
                     <div class="row mb-4">
-                    <div class="col">
-                        <div class="form-outline">
-                        <input
-                                type="text"
-                                id="form6Example1"
-                                class="form-control"
-                                style="
-                                        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC');
-                                        background-repeat: no-repeat;
-                                        background-attachment: scroll;
-                                        background-size: 16px 18px;
-                                        background-position: 98% 50%;
-                                        "
-                                autocomplete="off"
+                        <div class="col">
+                            <div class="form-outline">
+                                <input
+                                    required
+                                    type="text"
+                                    id="form6Example1"
+                                    class="form-control"
+                                    autocomplete="off"
+                                    name="first-name"
                                 />
-                        <label
-                                class="form-label"
-                                for="form6Example1"
-                                style="margin-left: 0px"
-                                >First name</label
-                            >
-                        <div class="form-notch">
-                            <div
-                                class="form-notch-leading"
-                                style="width: 9px"
-                                ></div>
-                            <div
-                                class="form-notch-middle"
-                                style="width: 68.8px"
-                                ></div>
-                            <div class="form-notch-trailing"></div>
+                                <label
+                                    class="form-label"
+                                    for="form6Example1"
+                                    class="first-name"
+                                >First name</label>
+                            </div>
                         </div>
-                        <div class="form-notch">
-                            <div
-                                class="form-notch-leading"
-                                style="width: 9px"
-                                ></div>
-                            <div
-                                class="form-notch-middle"
-                                style="width: 68.8px"
-                                ></div>
-                            <div class="form-notch-trailing"></div>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-outline">
-                        <input
-                                type="text"
-                                id="form6Example2"
-                                class="form-control"
-                                autocomplete="off"
-                                style="
-                                        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC');
-                                        background-repeat: no-repeat;
-                                        background-attachment: scroll;
-                                        background-size: 16px 18px;
-                                        background-position: 98% 50%;
-                                        "
+                        <div class="col">
+                            <div class="form-outline">
+                                <input
+                                    required
+                                    type="text"
+                                    id="form6Example2"
+                                    class="form-control"
+                                    autocomplete="off"
+                                    name="last-name"
                                 />
-                        <label
-                                class="form-label"
-                                for="form6Example2"
-                                style="margin-left: 0px"
-                                >Last name</label
-                            >
-                        <div class="form-notch">
-                            <div
-                                class="form-notch-leading"
-                                style="width: 9px"
-                                ></div>
-                            <div
-                                class="form-notch-middle"
-                                style="width: 68px"
-                                ></div>
-                            <div class="form-notch-trailing"></div>
+                                <label
+                                    class="form-label"
+                                    for="form6Example2"
+                                    style="margin-left: 0px"
+                                >Last name</label>
+                            </div>
                         </div>
-                        <div class="form-notch">
-                            <div
-                                class="form-notch-leading"
-                                style="width: 9px"
-                                ></div>
-                            <div
-                                class="form-notch-middle"
-                                style="width: 68px"
-                                ></div>
-                            <div class="form-notch-trailing"></div>
-                        </div>
-                        </div>
-                    </div>
                     </div>
         
                     <!-- Text input -->
                     <div class="form-outline mb-4">
-                    <input
-                            type="text"
-                            id="form6Example3"
-                            class="form-control"
-                            autocomplete="off"
-                            style="
-                                    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC');
-                                    background-repeat: no-repeat;
-                                    background-attachment: scroll;
-                                    background-size: 16px 18px;
-                                    background-position: 98% 50%;
-                                    "
-                            />
-                    <label
-                            class="form-label"
-                            for="form6Example3"
-                            style="margin-left: 0px"
-                            >Company name</label
-                        >
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 98.4px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 98.4px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
-                    </div>
-        
-                    <!-- Text input -->
-                    <div class="form-outline mb-4">
-                    <input
+                        <input
+                            required
                             type="text"
                             id="form6Example4"
                             class="form-control"
                             autocomplete="off"
-                            style="
-                                    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC');
-                                    background-repeat: no-repeat;
-                                    background-attachment: scroll;
-                                    background-size: 16px 18px;
-                                    background-position: 98% 50%;
-                                    "
-                            />
-                    <label
+                            name="address"
+                        />
+                        <label
                             class="form-label"
                             for="form6Example4"
                             style="margin-left: 0px"
-                            >Address</label
-                        >
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 55.2px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 55.2px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
+                        >Address</label>
                     </div>
         
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                    <input
+                        <input
+                            required
                             type="email"
                             id="form6Example5"
                             class="form-control"
                             autocomplete="off"
-                            style="
-                                    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC');
-                                    background-repeat: no-repeat;
-                                    background-attachment: scroll;
-                                    background-size: 16px 18px;
-                                    background-position: 98% 50%;
-                                    "
-                            />
-                    <label
+                            name="email"
+                        />
+                        <label
                             class="form-label"
                             for="form6Example5"
                             style="margin-left: 0px"
-                            >Email</label
-                        >
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 40px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 40px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
+                        >Email</label>
                     </div>
         
                     <!-- Number input -->
                     <div class="form-outline mb-4">
-                    <input
+                        <input
+                            required
                             type="number"
                             id="form6Example6"
                             class="form-control"
-                            />
-                    <label
+                            name="phone"
+                        />
+                        <label
                             class="form-label"
                             for="form6Example6"
                             style="margin-left: 0px"
-                            >Phone</label
-                        >
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 44.8px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
+                        >Phone</label>
                     </div>
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 44.8px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
-                    </div>
-        
+
                     <!-- Message input -->
                     <div class="form-outline mb-4">
-                    <textarea
-                                class="form-control"
-                                id="form6Example7"
-                                rows="4"
-                                ></textarea>
-                    <label
+                        <textarea
+                            class="form-control"
+                            id="form6Example7"
+                            rows="4"
+                            name="message"
+                        ></textarea>
+                        <label
                             class="form-label"
                             for="form6Example7"
                             style="margin-left: 0px"
-                            >Additional information</label
-                        >
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 131.2px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
-                    <div class="form-notch">
-                        <div
-                            class="form-notch-leading"
-                            style="width: 9px"
-                            ></div>
-                        <div
-                            class="form-notch-middle"
-                            style="width: 131.2px"
-                            ></div>
-                        <div class="form-notch-trailing"></div>
-                    </div>
-                    </div>
-        
-                    <!-- Checkbox -->
-                    <div class="form-check d-flex justify-content-center mb-4">
-                    <input
-                            class="form-check-input me-2"
-                            type="checkbox"
-                            value=""
-                            id="form6Example8"
-                            checked=""
-                            />
-                    <label class="form-check-label" for="form6Example8">
-                        Create an account?
-                    </label>
+                        >Additional information</label>
                     </div>
                 </form>
                 </section>
@@ -443,9 +230,51 @@
                         </div>
                     </div>
                 
-                <button type="button" class="btn btn-success btn-block mb-4">
-                    Place order
-                </button>
+                    <!-- <button id="make-payment" type="button" class="btn btn-primary btn-block mb-4">
+                        Place order
+                    </button> -->
+                    <!-- Button trigger modal -->
+                    <button 
+                        type="button" 
+                        class="btn btn-primary btn-block mb-4" 
+                        data-mdb-toggle="modal" 
+                        data-mdb-target="#submitModal"
+                    >
+                        Place order
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div 
+                        class="modal fade" 
+                        id="submitModal" 
+                        tabindex="-1" 
+                        aria-labelledby="submitModalLabel" 
+                        aria-hidden="true"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="submitModalLabel">Payment</h5>
+                                    <button 
+                                        type="button" 
+                                        class="btn-close" 
+                                        data-mdb-dismiss="modal" 
+                                        aria-label="Close"
+                                    ></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="paypal-button"></div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-primary" 
+                                        data-mdb-dismiss="modal"
+                                    >Go back</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <!--Section: Summary-->
             </div>
@@ -453,5 +282,50 @@
     </div>
     <!-- Place order  -->
 </section>
+
+<script type="text/javascript" src="{% static 'js/order.js' %}"></script>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+  paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+      sandbox: 'AW_UGngJPdhmo5GQIG9Cxek96ITIzoPUmPano_DXfhmupMEH8mB4l86W2pavw3mGEKNmzYModIiHRU8j',
+      production: 'demo_production_client_id'
+    },
+    // Customize button (optional)
+    locale: 'en_US',
+    style: {
+      size: 'responsive',
+      color: 'blue',
+      shape: 'rect',
+      layout: 'vertical',
+    },
+
+    // Enable Pay Now checkout flow (optional)
+    commit: true,
+
+    // Set up a payment
+    payment: function(data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: {{order.get_cart_total|floatformat:2}},
+            currency: 'EUR'
+          }
+        }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        // Show a confirmation message to the buyer
+        window.alert('Thank you for your purchase!');
+      });
+    }
+  }, '#paypal-button');
+
+</script>
 
 {% endblock content %}
