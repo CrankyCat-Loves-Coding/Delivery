@@ -23,5 +23,9 @@ urlpatterns = [
     path('menu/', MenuItem.as_view(), name='menu'),
     path('cart/', Cart.as_view(), name='cart'),
     path('update_cart/', UpdateCart.as_view(), name='update_cart'),
-    path('order-pay-confirmation/', OrderPayConfirmation.as_view(), name='order-pay-confirmation'),
+    path(
+        'order-pay-confirmation/',
+        OrderPayConfirmation.as_view(),
+        name='order-pay-confirmation'
+    ),
 ]

@@ -58,7 +58,28 @@ class MenuItem(View):
         }
 
         return render(request, 'menu.html', context)
- 
+
+
+class OrderView(View):
+
+    def post(self, request, *args, **kwargs):
+        full_name = request.POST.get('full_name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        eircode = request.POST.get('eircode')
+        message = request.POST.get('message')
+
+        context = {
+            'full_name': full_name,
+            'phone': phone,
+            'email': email,
+            'address': address,
+            'eircode': eircode,
+            'message': message,
+        }
+        return render(request, 'cart.html', context)
+
 
 class Cart(View):
     model = Order
@@ -95,24 +116,11 @@ class UpdateCart(View):
         print('action:', action)
         print('menuId:', menuId)
 
-        # first_name = request.POST.get('first_name')
-        # last_name = request.POST.get('last_name')
-        # address = request.POST.get('address')
-        # email = request.POST.get('email')
-        # phone = request.POST.get('phone')
-        # message = request.POST.get('message')
-
         customer = request.user.customer
         menu = Menu.objects.get(id=menuId)
         order, created = Order.objects.get_or_create(
             customer=customer,
             complete=False,
-            # first_name=first_name,
-            # last_name=last_name,
-            # address=address,
-            # email=email,
-            # phone=phone,
-            # message=message
         )
 
         orderItem, created = OrderItem.objects.get_or_create(

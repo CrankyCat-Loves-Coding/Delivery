@@ -64,15 +64,18 @@ class OrderItem(models.Model):
         return total
 
 
-class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
-    order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
+class OrderModel(models.Model):
+    created_on = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=200, null=False)
+    phone = models.CharField(max_length=200, null=False)
     email = models.CharField(max_length=200, null=False)
     address = models.CharField(max_length=200, null=False)
-    postcode = models.CharField(max_length=200, null=False)
-    phone = models.CharField(max_length=200, null=False)
-    data_added = models.DateTimeField(auto_now_add=True)
+    eircode = models.CharField(max_length=200, null=False)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
     is_paid = models.BooleanField(default=False)
+    items = models.ManyToManyField(
+        'Menu', related_name='order', blank=True
+    )
 
     def __str__(self):
         return self.address

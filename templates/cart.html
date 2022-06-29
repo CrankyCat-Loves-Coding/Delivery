@@ -98,45 +98,8 @@
                 <!--Section: Checkout form-->
                 <section class="shadow-5 p-4">
                 <form id="form">
-                    <!-- 2 column grid layout with text inputs for the first and last names -->
-                    <div class="row mb-4">
-                        <div class="col">
-                            <div class="form-outline">
-                                <input
-                                    required
-                                    type="text"
-                                    id="form6Example1"
-                                    class="form-control"
-                                    autocomplete="off"
-                                    name="first-name"
-                                />
-                                <label
-                                    class="form-label"
-                                    for="form6Example1"
-                                    class="first-name"
-                                >First name</label>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-outline">
-                                <input
-                                    required
-                                    type="text"
-                                    id="form6Example2"
-                                    class="form-control"
-                                    autocomplete="off"
-                                    name="last-name"
-                                />
-                                <label
-                                    class="form-label"
-                                    for="form6Example2"
-                                    style="margin-left: 0px"
-                                >Last name</label>
-                            </div>
-                        </div>
-                    </div>
-        
-                    <!-- Text input -->
+
+                    <!-- Full name text input -->
                     <div class="form-outline mb-4">
                         <input
                             required
@@ -144,15 +107,31 @@
                             id="form6Example4"
                             class="form-control"
                             autocomplete="off"
-                            name="address"
+                            name="full-name"
                         />
                         <label
                             class="form-label"
                             for="form6Example4"
                             style="margin-left: 0px"
-                        >Address</label>
+                        >Full name</label>
                     </div>
-        
+
+                    <!-- Number input -->
+                    <div class="form-outline mb-4">
+                        <input
+                            required
+                            type="number"
+                            id="form6Example6"
+                            class="form-control"
+                            name="phone"
+                        />
+                        <label
+                            class="form-label"
+                            for="form6Example6"
+                            style="margin-left: 0px"
+                        >Phone</label>
+                    </div>
+
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <input
@@ -170,22 +149,40 @@
                         >Email</label>
                     </div>
         
-                    <!-- Number input -->
+                    <!-- Address input -->
                     <div class="form-outline mb-4">
                         <input
                             required
-                            type="number"
-                            id="form6Example6"
+                            type="text"
+                            id="form6Example4"
                             class="form-control"
-                            name="phone"
+                            autocomplete="off"
+                            name="address"
                         />
                         <label
                             class="form-label"
-                            for="form6Example6"
+                            for="form6Example4"
                             style="margin-left: 0px"
-                        >Phone</label>
+                        >Address</label>
                     </div>
 
+                    <!-- Eircode input -->
+                    <div class="form-outline mb-4">
+                        <input
+                            required
+                            type="text"
+                            id="form6Example4"
+                            class="form-control"
+                            autocomplete="off"
+                            name="eircode"
+                        />
+                        <label
+                            class="form-label"
+                            for="form6Example4"
+                            style="margin-left: 0px"
+                        >Eircode</label>
+                    </div>
+        
                     <!-- Message input -->
                     <div class="form-outline mb-4">
                         <textarea
@@ -198,7 +195,7 @@
                             class="form-label"
                             for="form6Example7"
                             style="margin-left: 0px"
-                        >Additional information</label>
+                        >Message</label>
                     </div>
                 </form>
                 </section>
