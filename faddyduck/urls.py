@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from delivery.views import Main, MenuItem, Cart, UpdateCart
+from delivery.views import Main, MenuItem, Cart, UpdateCart, OrderPayConfirmation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,4 +23,5 @@ urlpatterns = [
     path('menu/', MenuItem.as_view(), name='menu'),
     path('cart/', Cart.as_view(), name='cart'),
     path('update_cart/', UpdateCart.as_view(), name='update_cart'),
+    path('order-pay-confirmation/', OrderPayConfirmation.as_view(), name='order-pay-confirmation'),
 ]
