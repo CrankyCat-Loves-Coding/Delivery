@@ -1,9 +1,64 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views import View
-from .models import Menu, Order, OrderItem
+from .models import Menu, Order, OrderItem, OrderModel, Customer
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
+from .forms import CreateUserForm
+from django.contrib import messages
 import json
-import datetime
+
+
+class RegisterPage(View):
+    def get(self, request, *args, **kwargs):
+        form = CreateUserForm()
+
+        if request.method == 'POST':
+            form = CreateUserForm(request.POST)
+            if form.is_valid():
+                form.save()
+                user = form.cleaned_data.get('username')
+                messages.success(request, 'Account was created for ' + user)
+            
+                return redirect('login')
+        else:
+            form = UserCreationForm()
+
+        context = {
+            'form': form
+        }
+        return render(request, 'accounts/signup.html', context)
+
+
+class LoginPage(View):
+    def get(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+
+            user = authenticate(
+                request,
+                username=username,
+                password=password
+            )
+
+            if user is not None:
+                login(request, user)
+                return redirect('index')
+
+        context = {
+
+        }
+        return render(request, 'accounts/login.html', context)
+
+
+
+class Customer(View):
+    def get(self, request, *args, **kwargs):
+
+
+        return render(request, 'customer.html')
+
 
 class Main(View):
 
@@ -60,30 +115,31 @@ class MenuItem(View):
         return render(request, 'menu.html', context)
 
 
-class OrderView(View):
+# class OrderView(View):
 
-    def post(self, request, *args, **kwargs):
-        full_name = request.POST.get('full_name')
-        phone = request.POST.get('phone')
-        email = request.POST.get('email')
-        address = request.POST.get('address')
-        eircode = request.POST.get('eircode')
-        message = request.POST.get('message')
+#     def post(self, request, *args, **kwargs):
+#         full_name = request.POST.get('full_name')
+#         phone = request.POST.get('phone')
+#         email = request.POST.get('email')
+#         address = request.POST.get('address')
+#         eircode = request.POST.get('eircode')
+#         message = request.POST.get('message')
 
-        context = {
-            'full_name': full_name,
-            'phone': phone,
-            'email': email,
-            'address': address,
-            'eircode': eircode,
-            'message': message,
-        }
-        return render(request, 'cart.html', context)
+#         context = {
+#             'full_name': full_name,
+#             'phone': phone,
+#             'email': email,
+#             'address': address,
+#             'eircode': eircode,
+#             'message': message,
+#         }
+#         return render(request, 'cart.html', context)
 
 
 class Cart(View):
     model = Order
     model = OrderItem
+    model = OrderModel
 
     def get(self, request, *args, **kwargs): 
 
@@ -104,6 +160,25 @@ class Cart(View):
         }
 
         return render(request, 'cart.html', context)
+
+    def post(self, request, *args, **kwargs):
+        full_name = request.POST.get('full_name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        address = request.POST.get('address')
+        eircode = request.POST.get('eircode')
+        message = request.POST.get('message')
+
+        order = OrderModel.objects.create (
+            full_name=full_name,
+            phone=phone,
+            email=email,
+            address=address,
+            eircode=eircode,
+            message=message,
+        )
+
+        return render(request, 'cart.html')
 
 
 class UpdateCart(View):
@@ -140,6 +215,7 @@ class UpdateCart(View):
 
         return JsonResponse('Item was added', safe=False)
 
+
 class OrderConfirmation(View):
 
     def get(self, request, pk, *args, **kwargs):
@@ -158,3 +234,5 @@ class OrderConfirmation(View):
 class OrderPayConfirmation(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'order-pay-confirmation.html')
+
+

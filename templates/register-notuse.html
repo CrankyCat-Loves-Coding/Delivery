@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!--Main Navigation-->
+<header>
+    <style>
+        #intro {
+        background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+        height: 100vh;
+        }
+
+        /* Height for devices larger than 576px */
+        @media (min-width: 992px) {
+        #intro {
+            margin-top: -58.59px;
+        }
+        }
+
+        .navbar .nav-link {
+        color: #fff !important;
+        }
+    </style>
+
+    <!-- Background image -->
+    <div id="intro" class="bg-image shadow-2-strong">
+        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-md-8">
+                        <form 
+                            method="POST" action=""
+                            class="bg-white  rounded-5 shadow-5-strong p-5"
+                        >
+                        {% csrf_token %}
+
+                            <!-- Username input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" name="user_name" id="user_name" class="form-control" />
+                                <label class="form-label" for="user_name">Username</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" name="pwd" id="pwd" class="form-control" />
+                                <label class="form-label" for="pwd">Password</label>
+                            </div>
+
+                            <!-- Confirm Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" name="cpwd" id="cpwd" class="form-control" />
+                                <label class="form-label" for="cpwd">Confirm Password</label>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" name="email" id="email" class="form-control" />
+                                <label class="form-label" for="email">Email address</label>
+                            </div>
+
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="row mb-4">
+            
+                                <div class="col text-center">
+                                    <!-- Simple link -->
+                                    <h8>Already have an account?</h8> 
+                                    <a href="#!">Login</a>
+                                </div>
+                            </div>
+        
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block">Register Account</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Background image -->
+
+</header>
+<!--Main Navigation-->
+
+<form 
+method="POST" action="{% url 'account_signup' %}"
+class="bg-white rounded-5 shadow-5-strong p-5"
+>
+{% csrf_token %}
+
+<!-- Username input -->
+<div class="form-outline mb-4">
+  <!-- <input type="text" name="user_name" id="user_name" class="form-control" /> -->
+  {{form.username}}
+  <label class="form-label" for="user_name">Username</label>
+</div>
+
+<!-- Email input -->
+<div class="form-outline mb-4">
+  <!-- <input type="email" name="email" id="email" class="form-control" /> -->
+  {{form.email}}
+  <label class="form-label" for="email">Email address</label>
+</div>
+
+<!-- Password input -->
+<div class="form-outline mb-4">
+  <!-- <input type="password" name="pwd" id="password1" class="form-control" /> -->
+  {{form.password1}}
+  <label class="form-label" for="password1">Password</label>
+</div>
+
+<!-- Confirm Password input -->
+<div class="form-outline mb-4">
+  <!-- <input type="password" name="password2" id="cpwd" class="form-control" /> -->
+  {{form.password2}}
+  <label class="form-label" for="password2">Confirm Password</label>
+</div>
+
+<!-- 2 column grid layout for inline styling -->
+<div class="row mb-4">
+
+  <div class="col text-center">
+    <!-- Simple link -->
+    <h8>Already have an account?</h8> 
+    <a href="{% url 'account_login' %}">Login</a>
+  </div>
+</div>
+
+{{form.errors}}
+
+<!-- Submit button -->
+<button type="submit" class="btn btn-primary btn-block">{% trans "Sign Up" %} &raquo;</button>
+</form>
+
+
+
+<h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit" class="btn btn-primary btn-block">{% trans "Sign Up" %} &raquo;</button>
+</form>
+
+
+
+{% endblock content %}

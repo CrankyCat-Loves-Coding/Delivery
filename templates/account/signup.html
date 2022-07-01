@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+
+
+
+<!--Main Navigation-->
+<header>
+  <style>
+    #intro {
+    background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+    height: 100vh;
+    }
+
+    /* Height for devices larger than 576px */
+    @media (min-width: 992px) {
+    #intro {
+        margin-top: -58.59px;
+    }
+    }
+  </style>
+
+
+
+  <!-- Background image -->
+  <div id="intro" class="bg-image shadow-2-strong">
+    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-5 col-md-8">
+
+            <form class="signup bg-white rounded-5 shadow-5-strong p-5" 
+              id="signup_form" method="post" action="{% url 'account_signup' %}"
+            >
+              {% csrf_token %}
+              {{ form.as_p }}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4">
+
+                <div class="col text-center">
+                  <!-- Simple link -->
+                  <h8>Already have an account?</h8> 
+                  <a href="{% url 'account_login' %}">Login</a>
+                </div>
+              </div>
+              {{form.errors}}
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block">{% trans "Sign Up" %} &raquo;</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Background image -->
+
+</header>
+<!--Main Navigation-->
+
+<script>
+  //Query all input fields
+  var form_fields = document.getElementsByTagName('input')
+  form_fields[1].placeholder='Username..';
+  form_fields[2].placeholder='Email..';
+  form_fields[3].placeholder='Enter password..';
+  form_fields[4].placeholder='Re-enter password..';
+
+  for (var field in form_fields){
+    form_fields[field].className += 'form-control'
+  }
+</script>
+
+{% endblock %}

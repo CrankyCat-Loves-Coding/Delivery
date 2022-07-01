@@ -86,9 +86,26 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'index'%}">Fuddy Duck</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="{% url 'menu' %}">Menu</a>
         </li>
+
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+        </li>
+        {% else %}
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+        </li>
+        {% endif %}
+
       </ul>
       <!-- Left links -->
 
@@ -130,6 +147,7 @@
           </li>
         </ul>
       </div>
+      
       <!-- Avatar -->
       <div class="dropdown">
         <a
@@ -163,6 +181,7 @@
           </li>
         </ul>
       </div>
+
     </div>
     <!-- Right elements -->
   </div>

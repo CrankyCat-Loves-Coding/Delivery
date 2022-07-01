@@ -1,32 +1,32 @@
-var total ='{{order.get_cart_total|floatformat:2}}'
+var total ='{{order.get_cart_total}}'
 var shipping = '{{order.shipping}}'
 var form = document.getElementById('form')
 
 //monitor click for make payment button
-document.getElementById('make-payment').addEventListener('click',function(e){
-    submitFormData()
-})
+// document.getElementById('make-payment').addEventListener('click',function(e){
+//     submitFormData()
+// })
 
 function submitFormData(){
     console.log('Payment button clicked....')
 
-    var userFormData = {
-        'name':null,
-        'email':null,
-        'total':total,
-    }
+    // var userFormData = {
+    //     'name':null,
+    //     'email':null,
+    //     'total':total,
+    // }
 
-    var shippingInfo = {
-        'address':null,
-        'email':null,
-        'phone':null,
-    }
+    // var shippingInfo = {
+    //     'address':null,
+    //     'email':null,
+    //     'phone':null,
+    // }
 
-    if(shipping != 'False'){
-        shippingInfo.address = form.address.value
-        shippingInfo.email = form.email.value
-        shippingInfo.phone = form.phone.value
-    }
+    // if(shipping != 'False'){
+    //     shippingInfo.address = form.address.value
+    //     shippingInfo.email = form.email.value
+    //     shippingInfo.phone = form.phone.value
+    // }
 
     var url = '/process_order/'
     fetch(url, {
