@@ -45,3 +45,10 @@
 .form-width {
     width: 9px;
 }
+
+
+/* customer html */
+main.box {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}

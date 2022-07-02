@@ -1,7 +1,200 @@
 {%  extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+  
+<!--Main layout-->
+<main class="box">
+	<div class="container pt-4">
+		<!--Section: Minimal statistics cards-->
+		<section>
+			<div class="row">
+				<!-- customer profile -->
+				<div class="col-xl-3 col-sm-6 col-12 mb-4">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex justify-content-between px-md-1">
 
-<h1>customer</h1>
+								<div class="align-self-center">
+									<i class="far fa-user text-success fa-3x"></i>
+								</div>
+
+								<div>
+									<h3 class="text-success">156</h3>
+									<p class="mb-0">Profile</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- total orders -->
+				<div class="col-xl-3 col-sm-6 col-12 mb-4">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex justify-content-between px-md-1">
+								<div class="align-self-center">
+									<i class="fas fa-chart-line text-info fa-3x"></i>
+								</div>
+								<div class="text-end">
+									<h3 class="text-info">64.89 %</h3>
+									<p class="mb-0">Total orders</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- order deliveried -->
+				<div class="col-xl-3 col-sm-6 col-12 mb-4">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex justify-content-between px-md-1">
+
+								<div class="align-self-center">
+									<i class="fas fa-mug-hot text-danger fa-3x"></i>
+								</div>
+
+								<div>
+									<h3 class="text-danger">64.89 %</h3>
+									<p class="mb-0">Order deliveried</p>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<!-- order pending -->
+				<div class="col-xl-3 col-sm-6 col-12 mb-4">
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex justify-content-between px-md-1">
+
+								<div class="align-self-center">
+									<i class="fas fa-rocket text-warning fa-3x"></i>
+								</div>
+
+								<div>
+									<h3 class="text-warning">278</h3>
+									<p class="mb-0">pending</p>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</section>
+		<!--Section: Minimal statistics cards-->
+
+		<!--Section: Sales Performance KPIs customer html-->
+		<section class="mb-4 mt-5">
+			<div class="card">
+				<div class="card-header text-center py-3">
+					<h5 class="mb-0 text-center">
+						<strong>Order history</strong>
+					</h5>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table table-hover text-nowrap">
+							<thead>
+								<tr>
+									<th scope="col"></th>
+									<th scope="col">Order number</th>
+									<th scope="col">Order date</th>
+									<th scope="col">Delivery address</th>
+									<th scope="col">Contact number</th>
+									<th scope="col">Order status</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">Value</th>
+									<td>18,492</td>
+									<td>228</td>
+									<td>350</td>
+									<td>$4,787.64</td>
+									<td>$13.68</td>
+								</tr>
+								<tr>
+									<th scope="row">Percentage change</th>
+									<td>
+										<span class="text-danger">
+											<i class="fas fa-caret-down me-1"></i>
+											<span>-48.8%%</span>
+										</span>
+									</td>
+									<td>
+										<span class="text-success">
+											<i class="fas fa-caret-up me-1"></i>
+											<span>14.0%</span>
+										</span>
+									</td>
+									<td>
+										<span class="text-success">
+											<i class="fas fa-caret-up me-1"></i>
+											<span>46.4%</span>
+										</span>
+									</td>
+									<td>
+										<span class="text-success">
+										<i class="fas fa-caret-up me-1"></i><span>29.6%</span>
+										</span>
+									</td>
+									<td>
+										<span class="text-danger">
+											<i class="fas fa-caret-down me-1"></i>
+											<span>-11.5%</span>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">Absolute change</th>
+									<td>
+										<span class="text-danger">
+											<i class="fas fa-caret-down me-1"></i>
+											<span>-17,654</span>
+										</span>
+									</td>
+									<td>
+										<span class="text-success">
+											<i class="fas fa-caret-up me-1"></i>
+											<span>28</span>
+										</span>
+									</td>
+									<td>
+										<span class="text-success">
+											<i class="fas fa-caret-up me-1"></i>
+											<span>111</span>
+										</span>
+									</td>
+									<td>
+										<span class="text-success">
+											<i class="fas fa-caret-up me-1"></i>
+											<span>$1,092.72</span>
+										</span>
+									</td>
+									<td>
+										<span class="text-danger">
+											<i class="fas fa-caret-down me-1"></i>
+											<span>$-1.78</span>
+										</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--Section: Sales Performance KPIs-->
+	</div>
+</main>
+<!--Main layout-->
 
 {% endblock %}
