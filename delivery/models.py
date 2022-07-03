@@ -37,7 +37,7 @@ class Order(models.Model):
     transaction_id = models.CharField(max_length=100, null=True)
 
     def __str__(self):
-        return str(self.id)   
+        return str(self.id) 
     
     @property
     def get_cart_total(self):
@@ -66,19 +66,18 @@ class OrderItem(models.Model):
 
 class OrderModel(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=200, null=False)
-    phone = models.CharField(max_length=200, null=False)
-    email = models.CharField(max_length=200, null=False)
-    address = models.CharField(max_length=200, null=False)
-    eircode = models.CharField(max_length=200, null=False)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    name = models.CharField(max_length=200, null=True)
+    phone = models.CharField(max_length=200, null=True)
+    email = models.CharField(max_length=200, null=True)
+    address = models.CharField(max_length=200, null=True)
+    eircode = models.CharField(max_length=200, null=True)
     is_paid = models.BooleanField(default=False)
     items = models.ManyToManyField(
         'Menu', related_name='order', blank=True
     )
 
     def __str__(self):
-        return self.address
+        return f'Order:{self.created_on.strftime("%b %d %I: %M %p")}'
 
 
 

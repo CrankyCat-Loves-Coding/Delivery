@@ -51,7 +51,7 @@
                             <p class="fw-normal mb-1">{{item.menu.name}}</p>
                         </td>
                         <td>
-                            <span class="badge badge-success rounded-pill d-inline">€{{item.menu.price|floatformat:2}}</span>
+                            <span class="badge badge-success rounded-pill d-inline">€{{item.menu.price}}</span>
                         </td>
                         <td>
                             <div class="btn-group btn-group-sm shadow-0" role="group">
@@ -94,150 +94,163 @@
     <!-- Place order -->
     <div class="d-flex justify-content-center my-5">
         <div class="row col-md-10">
-            <div class="col-md-8 mb-4">
-                <!--Section: Checkout form-->
-                <section class="shadow-5 p-4">
-                <form id="form">
+            <div class="col-md-12 mb-4">
 
-                    <!-- Full name text input -->
-                    <div class="form-outline mb-4">
-                        <input
-                            required
-                            type="text"
-                            id="full-name"
-                            class="form-control"
-                            autocomplete="off"
-                            name="full-name"
-                        />
-                        <label
-                            class="form-label"
-                            for="full-name"
-                            style="margin-left: 0px"
-                        >Full name</label>
-                    </div>
+                <form id="form" action="" method="POST">
+                    {% csrf_token %}
 
-                    <!-- Number input -->
-                    <div class="form-outline mb-4">
-                        <input
-                            required
-                            type="number"
-                            id="phone"
-                            class="form-control"
-                            name="phone"
-                        />
-                        <label
-                            class="form-label"
-                            for="phone"
-                            style="margin-left: 0px"
-                        >Phone</label>
-                    </div>
+                    <div class="row">
+                        <!-- address -->
+                        <div class="col-md-8 mb-4">
 
-                    <!-- Email input -->
-                    <div class="form-outline mb-4">
-                        <input
-                            required
-                            type="email"
-                            id="email"
-                            class="form-control"
-                            autocomplete="off"
-                            name="email"
-                        />
-                        <label
-                            class="form-label"
-                            for="email"
-                            style="margin-left: 0px"
-                        >Email</label>
-                    </div>
-        
-                    <!-- Address input -->
-                    <div class="form-outline mb-4">
-                        <input
-                            required
-                            type="text"
-                            id="address"
-                            class="form-control"
-                            autocomplete="off"
-                            name="address"
-                        />
-                        <label
-                            class="form-label"
-                            for="address"
-                            style="margin-left: 0px"
-                        >Address</label>
-                    </div>
+                            <div class="card">
+                                <div class="card-body">
 
-                    <!-- Eircode input -->
-                    <div class="form-outline mb-4">
-                        <input
-                            required
-                            type="text"
-                            id="eircode"
-                            class="form-control"
-                            autocomplete="off"
-                            name="eircode"
-                        />
-                        <label
-                            class="form-label"
-                            for="eircode"
-                            style="margin-left: 0px"
-                        >Eircode</label>
-                    </div>
-        
-                    <!-- Message input -->
-                    <div class="form-outline mb-4">
-                        <textarea
-                            class="form-control"
-                            id="message"
-                            rows="4"
-                            name="message"
-                        ></textarea>
-                        <label
-                            class="form-label"
-                            for="message"
-                            style="margin-left: 0px"
-                        >Message</label>
-                    </div>
-                </form>
-                </section>
-                <!--Section: Checkout form-->
-            </div>
-        
-            <div class="col-md-4 mb-4">
-                <!--Section: Summary-->
-                <section>
-                    <div class="card">
+                                    <!-- Full name text input -->
+                                    <div class="form-outline mb-4">
+                                        <input
+                                            required
+                                            type="text"
+                                            id="name"
+                                            class="form-control"
+                                            autocomplete="off"
+                                            name="name"
+                                        />
+                                        <label
+                                            class="form-label"
+                                            for="name"
+                                            style="margin-left: 0px"
+                                        >Name</label>
+                                    </div>
+
+                                    <!-- Number input -->
+                                    <div class="form-outline mb-4">
+                                        <input
+                                            required
+                                            type="number"
+                                            id="phone"
+                                            class="form-control"
+                                            name="phone"
+                                        />
+                                        <label
+                                            class="form-label"
+                                            for="phone"
+                                            style="margin-left: 0px"
+                                        >Phone</label>
+                                    </div>
+
+                                    <!-- Email input -->
+                                    <div class="form-outline mb-4">
+                                        <input
+                                            required
+                                            type="email"
+                                            id="email"
+                                            class="form-control"
+                                            autocomplete="off"
+                                            name="email"
+                                        />
+                                        <label
+                                            class="form-label"
+                                            for="email"
+                                            style="margin-left: 0px"
+                                        >Email</label>
+                                    </div>
                         
-                        <div class="card-header bg-white text-center py-3">
-                        <h5 class="mb-0 fw-bold">Summary</h5>
+                                    <!-- Address input -->
+                                    <div class="form-outline mb-4">
+                                        <input
+                                            required
+                                            type="text"
+                                            id="address"
+                                            class="form-control"
+                                            autocomplete="off"
+                                            name="address"
+                                        />
+                                        <label
+                                            class="form-label"
+                                            for="address"
+                                            style="margin-left: 0px"
+                                        >Address</label>
+                                    </div>
+
+                                    <!-- Eircode input -->
+                                    <div class="form-outline mb-4">
+                                        <input
+                                            required
+                                            type="text"
+                                            id="eircode"
+                                            class="form-control"
+                                            autocomplete="off"
+                                            name="eircode"
+                                        />
+                                        <label
+                                            class="form-label"
+                                            for="eircode"
+                                            style="margin-left: 0px"
+                                        >Eircode</label>
+                                    </div>
+                        
+                                    <!-- Message input -->
+                                    <div class="form-outline mb-4">
+                                        <textarea
+                                            class="form-control"
+                                            id="message"
+                                            rows="4"
+                                            name="message"
+                                        ></textarea>
+                                        <label
+                                            class="form-label"
+                                            for="message"
+                                            style="margin-left: 0px"
+                                        >Message</label>
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
-            
-                        <div class="card-body">
-                        <ul>
-                            <li><strong>Delivery fee: </strong>$100</li>
-                            <li><strong>Service fee: </strong>$50</li>
-                            <li><strong>Total items: </strong>{{order.get_cart_items}}</li>
-                        </ul>
+                        <!-- address -->
+
+                        <!-- order summary -->
+                        <div class="col-md-4 mb-4">
+
+                            <div class="card">
+                                <div class="card-body">
+                                            
+                                    <div class="card-header bg-white text-center py-3">
+                                        <h5 class="mb-0 fw-bold">Summary</h5>
+                                    </div>
+                        
+                                    <div class="card-body">
+                                        <ul>
+                                            <li><strong>Delivery fee: </strong>$100</li>
+                                            <li><strong>Service fee: </strong>$50</li>
+                                            <li><strong>Total items: </strong>{{order.get_cart_items}}</li>
+                                        </ul>
+                                    </div>
+                        
+                                    <div
+                                        class="card-footer bg-white d-flex justify-content-between py-3"
+                                    >
+                                        <strong>Total amount:</strong>
+                                        <strong>{{order.get_cart_total|floatformat:2}}</strong>
+                                    </div>
+
+                                </div>
+                            </div>
                         </div>
-            
-                        <div
-                            class="card-footer bg-white d-flex justify-content-between py-3"
-                            >
-                            <strong>Total amount:</strong>
-                            <strong>{{order.get_cart_total|floatformat:2}}</strong>
-                        </div>
-                    </div>
-                
-                    <!-- <button id="make-payment" type="button" class="btn btn-primary btn-block mb-4">
-                        Place order
-                    </button> -->
+                        <!-- order summary -->
+
+                    </div> 
+
                     <!-- Button trigger modal -->
                     <button 
                         type="button" 
-                        class="btn btn-primary btn-block mb-4" 
+                        class="btn btn-primary" 
                         data-mdb-toggle="modal" 
                         data-mdb-target="#submitModal"
                     >
-                        Place order
+                        Next
                     </button>
                     
                     <!-- Modal -->
@@ -268,16 +281,24 @@
                                         class="btn btn-primary" 
                                         data-mdb-dismiss="modal"
                                     >Go back</button>
+                                    <button 
+                                        type="submit" 
+                                        class="btn btn-primary"
+                                    >Place Order!</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-                <!--Section: Summary-->
+                    <!-- Summary-->
+                </form>
+
             </div>
         </div>
     </div>
-    <!-- Place order  -->
+    <!-- Place order -->
+
+
+
 </section>
 
 <script type="text/javascript" src="{% static 'js/order.js' %}"></script>

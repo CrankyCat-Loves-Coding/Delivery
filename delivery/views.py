@@ -4,11 +4,14 @@ from django.views import View
 from .models import Menu, Order, OrderItem, OrderModel, Customer
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
-from .forms import CreateUserForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from .forms import CreateUserForm
+from django.core.mail import send_mail
+
 import json
 
-
+# login, logout and regester
 class RegisterPage(View):
     def get(self, request, *args, **kwargs):
         form = CreateUserForm()
@@ -52,13 +55,15 @@ class LoginPage(View):
         return render(request, 'accounts/login.html', context)
 
 
-
-class Customer(View):
+class Customer(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
+
+        # using LoginRequiredMixin to restrict access
+        login_url = 'accounts/login.html'
 
         return render(request, 'customer.html')
 
-
+# place order
 class Main(View):
 
     def get(self, request, *args, **kwargs):
@@ -114,37 +119,23 @@ class MenuItem(View):
         return render(request, 'menu.html', context)
 
 
-# class OrderView(View):
-
-#     def post(self, request, *args, **kwargs):
-#         full_name = request.POST.get('full_name')
-#         phone = request.POST.get('phone')
-#         email = request.POST.get('email')
-#         address = request.POST.get('address')
-#         eircode = request.POST.get('eircode')
-#         message = request.POST.get('message')
-
-#         context = {
-#             'full_name': full_name,
-#             'phone': phone,
-#             'email': email,
-#             'address': address,
-#             'eircode': eircode,
-#             'message': message,
-#         }
-#         return render(request, 'cart.html', context)
-
-
-class Cart(View):
+class Cart(LoginRequiredMixin, View):
     model = Order
     model = OrderItem
     model = OrderModel
 
+
     def get(self, request, *args, **kwargs): 
+
+        # using LoginRequiredMixin to restrict access
+        login_url = 'accounts/login.html' 
 
         if request.user.is_authenticated:
             customer = request.user.customer
-            order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            order, created = Order.objects.get_or_create(
+                customer=customer,
+                complete=False
+            )
             items = order.orderitem_set.all()
             # cartItems = order.get_cart_items
         else:
@@ -161,28 +152,80 @@ class Cart(View):
         return render(request, 'cart.html', context)
 
     def post(self, request, *args, **kwargs):
-        full_name = request.POST.get('full_name')
+        name = request.POST.get('name')
         phone = request.POST.get('phone')
         email = request.POST.get('email')
         address = request.POST.get('address')
         eircode = request.POST.get('eircode')
-        message = request.POST.get('message')
+
 
         order = OrderModel.objects.create (
-            full_name=full_name,
+            name=name,
             phone=phone,
             email=email,
             address=address,
-            eircode=eircode,
-            message=message,
+            eircode=eircode
+        )
+
+        body = (
+            'Thank you for your order!'
+            'Your food is being made and will be delivered soon!\n'
+            
+
+        )
+        #send order confirmation
+        send_mail(
+            'Order confirmation',
+            body,
+            'j35306406@gmail.com',
+            [email],
+            fail_silently=False
         )
 
         return render(request, 'cart.html')
 
 
+# class Address(LoginRequiredMixin, View):
+
+#     def post(self, request, *args, **kwargs):
+#         full_name = request.POST.get('full_name')
+#         phone = request.POST.get('phone')
+#         email = request.POST.get('email')
+#         address = request.POST.get('address')
+#         eircode = request.POST.get('eircode')
+#         message = request.POST.get('message')
+
+#         address = OrderModel.objects.create (
+#             full_name=full_name,
+#             phone=phone,
+#             email=email,
+#             address=address,
+#             eircode=eircode,
+#             message=message,
+#         )
+
+#         body = (
+#             'Thank you for your order!'
+#             'Your food is being made and will be delivered soon!\n'
+#             f'Your total:{price}\n'
+
+#         )
+#         #send order confirmation
+#         send_mail(
+#             'Order confirmation',
+#             body,
+#             'j35306406@gmail.com',
+#             [email],
+#             fail_silently=False
+#         )
+
+#         return render(request, 'cart.html')
+
+
 class UpdateCart(View):
 
     def post(self, request, *args, **kwargs):
+        
         data = json.loads(request.body)
         menuId = data['menuId'] 
         action = data['action']
