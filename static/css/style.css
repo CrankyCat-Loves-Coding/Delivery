@@ -1,7 +1,12 @@
 /* index landing container and image */
+
+#intro {
+    background-image: url(https://res.cloudinary.com/dqj8itdfg/image/upload/v1651007193/wok-665kb_ip9ist.webp);
+    height: 100vh;
+}
+
 .index-landing-container {
-    background-image: url('https://res.cloudinary.com/dqj8itdfg/image/upload/v1651007193/wok-665kb_ip9ist.webp');
-    height: 600px;
+    height: 100vh;
     margin-top: 58px;
 }
 
@@ -15,8 +20,12 @@
     margin-top: 58px;
 }
 
+.bg-image{
+    background-image: url('https://res.cloudinary.com/dqj8itdfg/image/upload/v1651007193/wok-665kb_ip9ist.webp');
+}
+
 .menu-image {
-    background-image: url('#');
+    background-image: url('https://res.cloudinary.com/dqj8itdfg/image/upload/v1651007193/wok-665kb_ip9ist.webp');
 }
 
 .cart-image {
@@ -51,4 +60,11 @@
 main.box {
     margin-top: 100px;
     margin-bottom: 50px;
+}
+
+
+@media (min-width: 992px) {
+    #intro {
+        margin-top: -58.59px;
+    }
 }
