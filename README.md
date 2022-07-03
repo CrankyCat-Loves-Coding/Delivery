@@ -1,108 +1,167 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# [**Fuddy Duck Food Delivery System**](https://https://faddyduck-delivery.herokuapp.com/)
 
-Welcome CrankyCat-Loves-Coding,
+![Portfolio image](readme/portfolio-image.jpg)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## **Overview**
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+This website is built as my fourth portfolio for my coding course. It’s only for educational purposes not suitable to use for any commercial activities. The name of the website called Faddy Duck. It is a website for Peking(Beijing) style deli. This website is designed for an imagined small restaurant. It’s aimed to offer an opportunity to engage with their customers through the website and finally improve the possibility to influence a customer to purchase food via the website.
 
-## Gitpod Reminders
+## **Table of Contents**
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+- [**Let’s find Voilet’s Toy**](#overview)
+  - [**Overview**](#overview)
+  - [**Table of Contents**](#table-of-contents)
+    - [**1. What Is It?**](#1-what-is-it)
+    - [**2. How to Achieve?**](#2-how-to-achieve)
+    - [**3. Testing and Launch**](#3-testing-and-launch)
+    - [**4. Deployment**](#4-deployment)
+    - [**5. Support**](#5-support)
+    - [**6. Reference and Research**](#6-reference-and-research)
 
-`python3 -m http.server`
+### **1. What Is It?**
 
-A blue button should appear to click: _Make Public_,
+- The Goal of The Game
 
-Another blue button should appear to click: _Open Browser_.
+  - This game is based on the book <Let’s find Violet’s Toy> published by the LeapFrog company. This is a narrative storybook. It helps children learn how stories are put together. As children begin to see that storybooks include characters, settings, and a sequence of events with a clear beginning, middle and end, they can better comprehend new stories.
+  - The book introduces children to words and feelings through activities.
+  - This game is designed to be easy, attractive and fun for children to play.
+  - This game is also perfect for family time.
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+- Target Audience
 
-A blue button should appear to click: _Make Public_,
+  - Children (3-4 years-old)
+  - Parents who want to teach their children literacy skills
 
-Another blue button should appear to click: _Open Browser_.
+[Back to the top](#overview)
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### **2. How to Achieve?**
 
-To log into the Heroku toolbelt CLI:
+- Features
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+  - **Welcome Page**
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+    The header featured at the top of the page, showing the game name :Let’s Find Violet's toy! Violet is a bright purple puppy with a pink collar and white markings. It also contain a start button allowing players to start the game.The footer contain links to the website for purchasing the product as well as links to the designer's Github page.
 
-------
+    ![Phone](readme/iphone5-dimensions.jpg) 
+    
+  - **How to Play**
 
-## Release History
+     There are nine scenes for this game.
+     A ball will appear if the player has a wrong answer and a message of 'It's ok~ Let's try again~' will display.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+     ![Wrong Answer](readme/wrong-answer.jpg)
+     
+     If the player gets the correct answer, Violet will appear with a message of 'Wow! You got it!'.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+     ![Correct Answer](readme/correct-answer.jpg)
+     
+     The message of 'Well done! You have helped me find the ball. Thank you!'will appear when the player completes the quiz and a restart button will show.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+     ![Quiz Complete](readme/quiz-complete.jpg)
+     
+     Players will learn the words **'Sad, Carrot, Apple, Hose, Books, Sink** and **Rug'** by completing this quiz.
+    
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- Style Elements
+  - **Fonts**
+  
+    *Roboto* has a dual nature. It has a mechanical skeleton and the forms are largely geometric. At the same time, the font features friendly and open curves. While some grotesks distort their letterforms to force a rigid rhythm, Roboto doesn’t compromise, allowing letters to be settled into their natural width. This makes for a more natural reading rhythm more commonly found in humanist and serif types.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+    ![Font for the Body](readme/roboto400.jpg)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+    *Fjalla One* is a medium contrast display sans serif. Fjalla One has been carefully adjusted to the restrictions of the screen. Despite having display characteristics Fjalla One can be used in a wide range of sizes.
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+    ![Font for the Header](readme/fjalla-one-400.jpg)
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+  - **Icons**
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+    - Icons from [Flaticon](https://www.flaticon.com/) used to display answers.This helps players to recorgnize words.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+    ![Answer Icons](readme/answer-icons.jpg)
+    - Icons from [Font Awesome](https://fontawesome.com/) used to style social links to create a tidy and easy access for subscription.
+    - Icon [link](https://store.leapfrog.com/en-us/store/p/read-with-me-violet/_/A-prod19238) to purchase the product and attribute resourse provider and to GitHub.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+    ![Link Icons](readme/link-icons.jpg)
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+- Technology Stack
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+  - HTML5
+  - CSS3
+  - Javascript
+  - [Gitpod/Github](https://github.com/CrankyCat-Loves-Coding)
+  - [W3C HTML Validation Service](https://validator.w3.org/#validate_by_input)
+  - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
+  - [Beautifytools Javascript Validator](https://beautifytools.com/javascript-validator.php)
+  - [Font Awesome](https://fontawesome.com/)
+  - [Google Fonts](https://fonts.google.com/)
+  - [flaticon](https://www.flaticon.com/)
+  - [fandom](https://leapfrog.fandom.com/wiki/Violet)
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+[Back to the top](#overview)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### 3. **Testing and Launch**
 
-------
+- HTML validation
 
-## FAQ about the uptime script
+  - No errors or warnings were found when passing through the official W3C validator.
 
-**Why have you added this script?**
+- CSS validation
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+  - No errors or warnings were found when passing through the official Jigsaw validator.
 
-**How will this affect me?**
+- Accessibility
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+  - The colors and fonts chosen are easy to read and accessaiible by running it through lighthouse in devtools.
+![Web Accessibility check](readme/lighthouse.jpg)
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+- Testing on devices and browsers
+  - There was no issue found when tested on iPhone7 device
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+  ![Phone Test Result](readme/test-on-iphone7.png)
+  ![Phone Test Result](readme/phone-test.jpg)
+  - There was no issue found when tested on Ipad
 
-**So….?**
+  ![Ipad Test Result](readme/test-on-ipad.png)
+  ![Ipad Test Result](readme/ipad-test.jpg)
+  - There was no issue found when tested the game in different browsers: 
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+  Chrome
 
-**Can I opt out?**
+  ![Chrome Test Result](readme/test-on-chrome.jpg)
+  ![Chrome Test Result](readme/chrome-test.jpg)
+  Safari
+  
+  ![Safari Test Result](readme/test-on-safari.jpg)
+  ![Safari Test Result](readme/safari-test.jpg)
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+[Back to the top](#overview)
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+### 4. **Deployment**
 
-**Anything more?**
+- The game was deployed to GitHub page. The steps to deploy are as follows:
+  - In the GitHub repository, navigate to the Setting tab
+  - Select Page on the bottom left
+  - From the source section drop-down menu, select the  main branch and save
+  - Once the main branch has been selected, the page provided the link to the completed website.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+The live link can be found here [link](https://faddyduck-delivery.herokuapp.com/)
 
----
+[Back to the top](#overview)
 
-Happy coding!
+### 5. **Support**
+
+- Mentor
+
+  - [Simen Daehlin](https://www.linkedin.com/in/simendaehlin/)
+  A lead Full Stack Developer & Mentor
+
+  [Back to the top](#overview)
+
+### 6. **Reference and Research**
+
+- Reference
+
+  - [Build A Quiz App With JavaScript](https://www.youtube.com/watch?v=riDzcEQbX6k&list=PLKNe8p6OAKBwrz14Cgw31I6DVLo8_KP_z&index=15&ab_channel=WebDevSimplified)
+  - [Create a Quiz App using HTML CSS & JavaScript](https://www.youtube.com/watch?v=CqddbIrEM5I&ab_channel=CodingWithNick)
+
+[Back to the top](#overview)

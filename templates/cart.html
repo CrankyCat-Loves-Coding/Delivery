@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
 
@@ -17,6 +18,7 @@
         </div>
       </div>
     </div>
+    
     <!-- Background image -->
 </header>
 
@@ -91,125 +93,17 @@
     </div>
     <!-- Table -->
 
-    <!-- Place order -->
+    <!--Test Place order -->
     <div class="d-flex justify-content-center my-5">
         <div class="row col-md-10">
             <div class="col-md-12 mb-4">
 
-                <form id="form" action="" method="POST">
+                <form id="form ordersubmit" class="blueForms" action="" method="POST">
                     {% csrf_token %}
+                    
 
                     <div class="row">
-                        <!-- address -->
-                        <div class="col-md-8 mb-4">
 
-                            <div class="card">
-                                <div class="card-body">
-
-                                    <!-- Full name text input -->
-                                    <div class="form-outline mb-4">
-                                        <input
-                                            required
-                                            type="text"
-                                            id="name"
-                                            class="form-control"
-                                            autocomplete="off"
-                                            name="name"
-                                        />
-                                        <label
-                                            class="form-label"
-                                            for="name"
-                                            style="margin-left: 0px"
-                                        >Name</label>
-                                    </div>
-
-                                    <!-- Number input -->
-                                    <div class="form-outline mb-4">
-                                        <input
-                                            required
-                                            type="number"
-                                            id="phone"
-                                            class="form-control"
-                                            name="phone"
-                                        />
-                                        <label
-                                            class="form-label"
-                                            for="phone"
-                                            style="margin-left: 0px"
-                                        >Phone</label>
-                                    </div>
-
-                                    <!-- Email input -->
-                                    <div class="form-outline mb-4">
-                                        <input
-                                            required
-                                            type="email"
-                                            id="email"
-                                            class="form-control"
-                                            autocomplete="off"
-                                            name="email"
-                                        />
-                                        <label
-                                            class="form-label"
-                                            for="email"
-                                            style="margin-left: 0px"
-                                        >Email</label>
-                                    </div>
-                        
-                                    <!-- Address input -->
-                                    <div class="form-outline mb-4">
-                                        <input
-                                            required
-                                            type="text"
-                                            id="address"
-                                            class="form-control"
-                                            autocomplete="off"
-                                            name="address"
-                                        />
-                                        <label
-                                            class="form-label"
-                                            for="address"
-                                            style="margin-left: 0px"
-                                        >Address</label>
-                                    </div>
-
-                                    <!-- Eircode input -->
-                                    <div class="form-outline mb-4">
-                                        <input
-                                            required
-                                            type="text"
-                                            id="eircode"
-                                            class="form-control"
-                                            autocomplete="off"
-                                            name="eircode"
-                                        />
-                                        <label
-                                            class="form-label"
-                                            for="eircode"
-                                            style="margin-left: 0px"
-                                        >Eircode</label>
-                                    </div>
-                        
-                                    <!-- Message input -->
-                                    <div class="form-outline mb-4">
-                                        <textarea
-                                            class="form-control"
-                                            id="message"
-                                            rows="4"
-                                            name="message"
-                                        ></textarea>
-                                        <label
-                                            class="form-label"
-                                            for="message"
-                                            style="margin-left: 0px"
-                                        >Message</label>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- address -->
 
                         <!-- order summary -->
                         <div class="col-md-4 mb-4">
@@ -223,8 +117,6 @@
                         
                                     <div class="card-body">
                                         <ul>
-                                            <li><strong>Delivery fee: </strong>$100</li>
-                                            <li><strong>Service fee: </strong>$50</li>
                                             <li><strong>Total items: </strong>{{order.get_cart_items}}</li>
                                         </ul>
                                     </div>
@@ -235,36 +127,56 @@
                                         <strong>Total amount:</strong>
                                         <strong>{{order.get_cart_total|floatformat:2}}</strong>
                                     </div>
+                                    <div id="paypal-button"></div>
+                                    
 
                                 </div>
                             </div>
                         </div>
                         <!-- order summary -->
 
+
+                        <!-- address -->
+                        <div class="col-md-8 mb-4">
+
+                            <div class="card">
+                                <div class="card-body">
+                                    {% crispy form %}
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- address -->
+                        
+                        <button 
+                            type="submit" 
+                            class="btn btn-primary" 
+                        >Place order</button>
                     </div> 
 
                     <!-- Button trigger modal -->
                     <button 
                         type="button" 
-                        class="btn btn-primary" 
+                        class="btn btn-primary trigger" 
                         data-mdb-toggle="modal" 
-                        data-mdb-target="#submitModal"
+                        data-mdb-target="#payModal"
                     >
                         Next
                     </button>
                     
-                    <!-- Modal -->
+                    <!--Pay Modal -->
                     <div 
                         class="modal fade" 
-                        id="submitModal" 
+                        id="payModal" 
                         tabindex="-1" 
-                        aria-labelledby="submitModalLabel" 
+                        aria-labelledby="payModalLabel" 
                         aria-hidden="true"
                     >
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="submitModalLabel">Payment</h5>
+                                    <h5 class="modal-title" id="payModalLabel">Payment</h5>
                                     <button 
                                         type="button" 
                                         class="btn-close" 
@@ -282,22 +194,65 @@
                                         data-mdb-dismiss="modal"
                                     >Go back</button>
                                     <button 
-                                        type="submit" 
-                                        class="btn btn-primary"
-                                    >Place Order!</button>
+                                        type="button" 
+                                        class="btn btn-primary" 
+                                        data-mdb-toggle="modal" 
+                                        data-mdb-target="#submitModal"
+                                    >
+                                        Next
+                                    </button>
+
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!--Submit Modal -->
+                    <div 
+                    class="modal fade" 
+                    id="submitModal" 
+                    tabindex="-1" 
+                    aria-labelledby="submitModalLabel" 
+                    aria-hidden="true"
+                >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="submitModalLabel">Successfully paid</h5>
+                                <button 
+                                    type="button" 
+                                    class="btn-close" 
+                                    data-mdb-dismiss="modal" 
+                                    aria-label="Close"
+                                ></button>
+                            </div>
+                            <div class="modal-body">
+                                <div id="complete-button"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button 
+                                    type="button" 
+                                    class="btn btn-primary" 
+                                    data-mdb-dismiss="modal"
+                                >Go back</button>
+                                <button 
+                                    type="submit" 
+                                    class="btn btn-primary" 
+                                    data-mdb-dismiss="modal"
+                                >Place order</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                     <!-- Summary-->
+                    
                 </form>
 
             </div>
         </div>
     </div>
-    <!-- Place order -->
-
-
+    <!-- Test Place order -->
 
 </section>
 
@@ -339,7 +294,9 @@
     onAuthorize: function(data, actions) {
       return actions.payment.execute().then(function() {
         // Show a confirmation message to the buyer
-        window.location.href = '/order-pay-confirmation/'
+        // window.location.href = '/order-pay-confirmation/'
+        alert("you have paid.")
+
       });
     }
   }, '#paypal-button');

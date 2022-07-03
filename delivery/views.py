@@ -6,8 +6,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from .forms import CreateUserForm
+from .forms import CreateUserForm, AddressForm
 from django.core.mail import send_mail
+
 
 import json
 
@@ -141,12 +142,13 @@ class Cart(LoginRequiredMixin, View):
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
-            # cartItems = order['get_cart_items']
+            # cartItems = or der['get_cart_items']
         
         context = {
             'items': items,
             'order': order,
             # 'cartItems': cartItems
+            'form': AddressForm()
         }
 
         return render(request, 'cart.html', context)
@@ -181,9 +183,16 @@ class Cart(LoginRequiredMixin, View):
             [email],
             fail_silently=False
         )
+        
+        context = {
+            'form': AddressForm()
+        }
 
-        return render(request, 'cart.html')
+        return render(request, 'cart.html', context)
 
+class Pay(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'pay.html')
 
 # class Address(LoginRequiredMixin, View):
 
