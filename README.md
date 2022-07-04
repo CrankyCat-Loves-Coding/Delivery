@@ -1,6 +1,6 @@
 # [**Fuddy Duck Food Delivery System**](https://https://faddyduck-delivery.herokuapp.com/)
 
-![Portfolio image](readme/portfolio-image.jpg)
+![Portfolio image](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656884641/%E6%88%AA%E5%B1%8F2022-07-03_22.43.41_g6dkie.jpg)
 
 ## **Overview**
 
@@ -8,80 +8,92 @@ This website is built as my fourth portfolio for my coding course. It’s only f
 
 ## **Table of Contents**
 
-- [**Let’s find Voilet’s Toy**](#overview)
+- [**Fuddy Duck Food Delivery System**](#overview)
   - [**Overview**](#overview)
   - [**Table of Contents**](#table-of-contents)
-    - [**1. What Is It?**](#1-what-is-it)
-    - [**2. How to Achieve?**](#2-how-to-achieve)
+    - [**1. Draft**](#1-Draft)
+    - [**2. Demand Analysis**](#2-demand-analysis)
     - [**3. Testing and Launch**](#3-testing-and-launch)
     - [**4. Deployment**](#4-deployment)
     - [**5. Support**](#5-support)
     - [**6. Reference and Research**](#6-reference-and-research)
 
-### **1. What Is It?**
+### **1. Draft**
 
-- The Goal of The Game
+- Initiate Planing
 
-  - This game is based on the book <Let’s find Violet’s Toy> published by the LeapFrog company. This is a narrative storybook. It helps children learn how stories are put together. As children begin to see that storybooks include characters, settings, and a sequence of events with a clear beginning, middle and end, they can better comprehend new stories.
-  - The book introduces children to words and feelings through activities.
-  - This game is designed to be easy, attractive and fun for children to play.
-  - This game is also perfect for family time.
+![planing](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656885356/%E6%88%AA%E5%B1%8F2022-07-03_22.55.39_jxcp7t.jpg)
+
+    - Build a simple food delivery website that allows the owner exposes their business to any potential customers.
+    - Proving business information such as address, contact and opening hours.
+    - Categorize menus, provide item images, display price and descriptions.
+    - This website also contain essential functions such as Add to Cart, Pay online and Receive Order Confirmation via email.
 
 - Target Audience
 
-  - Children (3-4 years-old)
-  - Parents who want to teach their children literacy skills
+    - Small business.
 
 [Back to the top](#overview)
 
-### **2. How to Achieve?**
+### **2. Demand Analysis**
 
-- Features
+- Customer
 
-  - **Welcome Page**
-
-    The header featured at the top of the page, showing the game name :Let’s Find Violet's toy! Violet is a bright purple puppy with a pink collar and white markings. It also contain a start button allowing players to start the game.The footer contain links to the website for purchasing the product as well as links to the designer's Github page.
-
-    ![Phone](readme/iphone5-dimensions.jpg) 
-    
-  - **How to Play**
-
-     There are nine scenes for this game.
-     A ball will appear if the player has a wrong answer and a message of 'It's ok~ Let's try again~' will display.
-
-     ![Wrong Answer](readme/wrong-answer.jpg)
-     
-     If the player gets the correct answer, Violet will appear with a message of 'Wow! You got it!'.
-
-     ![Correct Answer](readme/correct-answer.jpg)
-     
-     The message of 'Well done! You have helped me find the ball. Thank you!'will appear when the player completes the quiz and a restart button will show.
-
-     ![Quiz Complete](readme/quiz-complete.jpg)
-     
-     Players will learn the words **'Sad, Carrot, Apple, Hose, Books, Sink** and **Rug'** by completing this quiz.
-    
-
-- Style Elements
-  - **Fonts**
+  - **Login Page** 
   
-    *Roboto* has a dual nature. It has a mechanical skeleton and the forms are largely geometric. At the same time, the font features friendly and open curves. While some grotesks distort their letterforms to force a rigid rhythm, Roboto doesn’t compromise, allowing letters to be settled into their natural width. This makes for a more natural reading rhythm more commonly found in humanist and serif types.
+  ![login page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656887220/%E6%88%AA%E5%B1%8F2022-07-03_23.26.35_rx1uiy.jpg)
 
-    ![Font for the Body](readme/roboto400.jpg)
+      - On the header, user would go back to the home page simply by clicking the logo or the name of the business. It also allows user to view the menu, login to the site and register if they like to place an order.
+      - The login page allows user login to the site, once the user login then they will be able to add products to cart and view order history.
+      - The login page also contain the function of input validation, it checks if information entered by the user is valid.
+      - It provides a link to registration page if a user has not been registered.
+    
+  - **Registration page** 
+  
+  ![Registration page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656889126/%E6%88%AA%E5%B1%8F2022-07-03_23.57.43_lpzbjj.jpg)
 
-    *Fjalla One* is a medium contrast display sans serif. Fjalla One has been carefully adjusted to the restrictions of the screen. Despite having display characteristics Fjalla One can be used in a wide range of sizes.
+      - Registration page collects user's name, email and allow them to set up password for their personal account.
+      - It provides a link to login page if a user has already registered.
 
-    ![Font for the Header](readme/fjalla-one-400.jpg)
+  - **Sign out page** 
+  
+  ![Sign out page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656889457/%E6%88%AA%E5%B1%8F2022-07-04_00.04.07_miyx3i.jpg)
 
-  - **Icons**
+      - This is a confirmation page to the user confirming if they are happy to sign up. Othervise, they can go back to the home page by clicking BACK button.
 
-    - Icons from [Flaticon](https://www.flaticon.com/) used to display answers.This helps players to recorgnize words.
+  - **Signed in page** 
+  
+  ![Signed in page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656890501/%E6%88%AA%E5%B1%8F2022-07-04_00.21.18_l42ai6.jpg)
 
-    ![Answer Icons](readme/answer-icons.jpg)
-    - Icons from [Font Awesome](https://fontawesome.com/) used to style social links to create a tidy and easy access for subscription.
-    - Icon [link](https://store.leapfrog.com/en-us/store/p/read-with-me-violet/_/A-prod19238) to purchase the product and attribute resourse provider and to GitHub.
+      - A cart and greeting on the top right only appear when a user is successfully signed in. The user will be able to access personal profile and cart from this page.
 
-    ![Link Icons](readme/link-icons.jpg)
+- Business
+  - **Home page** 
+  
+  ![home page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656890501/%E6%88%AA%E5%B1%8F2022-07-04_00.21.18_l42ai6.jpg)
+
+      - The first section is Navbar with logo displayed, it’s simple and easy for users to navigate the site.
+      - The second section would allow the business to display 3 posters and it would slide every 5 sec. On the right hand side of it would allow the business to enter any message they like to publish.
+      - The third section allow the business to link to social medias such as Facebook, Twitter, Google, Instagram, Linkedin and Github.
+      - The last section would be the footer of the site. It allows the business to pass important notification and display business information.
+
+
+  - **Product page**
+  
+  ![Product page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656892276/%E6%88%AA%E5%B1%8F2022-07-04_00.51.02_ylzg0a.jpg)
+
+      - Products are grouped in 3 categories. There are Meals, Dessert and Drinks in this case.
+      - Product name and price is displayed under product images. Product description is hidden by default unless the user expend to read. All description would be expended by one click.
+      - Categories can be access by clicking tabs on the top.
+      - Then user is able to add to cart.
+
+  - **Cart page**
+  
+  ![cart page]()
+  - **Profile page**
+  
+  ![profile page]()
+
 
 - Technology Stack
 
@@ -165,3 +177,6 @@ The live link can be found here [link](https://faddyduck-delivery.herokuapp.com/
   - [Create a Quiz App using HTML CSS & JavaScript](https://www.youtube.com/watch?v=CqddbIrEM5I&ab_channel=CodingWithNick)
 
 [Back to the top](#overview)
+
+
+[Welcome to django-allauth](https://django-allauth.readthedocs.io/en/latest/) 
