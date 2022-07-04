@@ -8,13 +8,16 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from .forms import CreateUserForm, AddressForm
 from django.core.mail import send_mail
-
-
+from datetime import datetime
+# from .decorators import allowed_users
 import json
 
-# login, logout and regester
+
+# login, logout and regester. work with [Customer model]
 class RegisterPage(View):
+
     def get(self, request, *args, **kwargs):
+
         form = CreateUserForm()
 
         if request.method == 'POST':
@@ -34,6 +37,7 @@ class RegisterPage(View):
         return render(request, 'accounts/signup.html', context)
 
 
+# login page view
 class LoginPage(View):
     def get(self, request, *args, **kwargs):
         if request.method == 'POST':
@@ -56,15 +60,31 @@ class LoginPage(View):
         return render(request, 'accounts/login.html', context)
 
 
+# customer/user view, profile and order info
 class Customer(LoginRequiredMixin, View):
+
+    # @allowed_users(allowed_roles=['admin'])
     def get(self, request, *args, **kwargs):
+
+        customer = OrderModel.objects.all()
+        total_orders = customer.count()
+        delivered = customer.filter(status='Delivered').count()
+        pending = customer.filter(status='Pending').count()
 
         # using LoginRequiredMixin to restrict access
         login_url = 'accounts/login.html'
 
-        return render(request, 'customer.html')
+        context = {
+            'customer': customer,
+            'total_orders': total_orders,
+            'delivered': delivered,
+            'Pending': pending
+        }
 
-# place order
+        return render(request, 'customer.html', context)
+
+
+# main page (Home)
 class Main(View):
 
     def get(self, request, *args, **kwargs):
@@ -88,6 +108,7 @@ class Main(View):
         return render(request, 'index.html')
 
 
+# menu page, display menu items and categories(Products)
 class MenuItem(View):
     model = Menu
 
@@ -120,6 +141,7 @@ class MenuItem(View):
         return render(request, 'menu.html', context)
 
 
+# cart page, display ordered items, payment page and address input
 class Cart(LoginRequiredMixin, View):
     model = Order
     model = OrderItem
@@ -154,12 +176,12 @@ class Cart(LoginRequiredMixin, View):
         return render(request, 'cart.html', context)
 
     def post(self, request, *args, **kwargs):
+
         name = request.POST.get('name')
         phone = request.POST.get('phone')
         email = request.POST.get('email')
         address = request.POST.get('address')
         eircode = request.POST.get('eircode')
-
 
         order = OrderModel.objects.create (
             name=name,
@@ -171,8 +193,7 @@ class Cart(LoginRequiredMixin, View):
 
         body = (
             'Thank you for your order!'
-            'Your food is being made and will be delivered soon!\n'
-            
+            'Your food is being made and will be delivered soon!\n'           
 
         )
         #send order confirmation
@@ -190,11 +211,14 @@ class Cart(LoginRequiredMixin, View):
 
         return render(request, 'cart.html', context)
 
+
+# not uesed view page !!!!!!
 class Pay(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'pay.html')
 
 
+# this is view for adding menu item to cart
 class UpdateCart(View):
 
     def post(self, request, *args, **kwargs):
@@ -231,23 +255,48 @@ class UpdateCart(View):
         return JsonResponse('Item was added', safe=False)
 
 
-class OrderConfirmation(View):
+def processOrder(request):
 
-    def get(self, request, pk, *args, **kwargs):
-        order = Menu.objects.get(pk=pk)
+    transaction_id = datetime.datetime.now().timestamp()
+    data = json.loads(request.body)
 
-        context = {
-            'pk': order.pk,
-            'price': order.price
-        }
-        return render(request, 'order_confirmation.html', context)
+    total = float(data['form']['total'])
+    order.transaction_id = transaction_id
 
-    def post(self, request, pk, *args, **kwargs):
-        print(request.body)
+    if total == float(order.get_cart_total):
+        order.complete = True
+    order.save()
+
+    return JsonResponse('cleared cart', safe=False)
 
 
+# class OrderConfirmation(View):
+
+#     def get(self, request, pk, *args, **kwargs):
+#         order = Menu.objects.get(pk=pk)
+
+#         context = {
+#             'pk': order.pk,
+#             'price': order.price
+#         }
+#         return render(request, 'order_confirmation.html', context)
+
+#     def post(self, request, pk, *args, **kwargs):
+#         print(request.body)
+
+
+# not uesed view page !!!!!!
 class OrderPayConfirmation(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'order-pay-confirmation.html')
 
 
+class userPage(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        orders = request.user.customer.order_set.all()
+        print('ORDERS:', orders)
+
+
+        context = {'orders': orders}
+        return render(request, 'accounts/user.html', context)

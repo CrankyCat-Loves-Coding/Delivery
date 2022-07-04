@@ -23,15 +23,30 @@ class AddressForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-        self.helper.form_id = 'ordersubmit'
+        self.helper.form_id = 'form'
         self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
         self.helper.form_tag = False
 
-        # self.helper.add_input(Submit('submit', 'Next'))
+        self.helper.add_input(Submit('submit', 'Place Order'))
 
     name = forms.CharField()
     phone = forms.CharField()
     email = forms.CharField()
     address = forms.CharField()
     eircode = forms.CharField()
+
+
+# class OrderHistory(forms.Form):
+
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self.helper = FormHelper(self)
+#         self.helper.form_id = 'amdinform'
+#         self.helper.form_method = 'get'
+
+#     transaction_id = forms.CharField()
+#     created_on = forms.DateTimeField()
+#     address = forms.CharField()
+#     phone = forms.CharField()
+#     status = forms.CharField()

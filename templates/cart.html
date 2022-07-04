@@ -81,7 +81,7 @@
         <div class="row col-md-10">
             <div class="col-md-12 mb-4">
 
-                <form id="form ordersubmit" class="blueForms" action="" method="POST">
+                <form id="form" class="blueForms" action="" method="POST">
                     {% csrf_token %}
                     
 
@@ -108,7 +108,7 @@
                                         class="card-footer bg-white d-flex justify-content-between py-3"
                                     >
                                         <strong>Total amount:</strong>
-                                        <strong>{{order.get_cart_total|floatformat:2}}</strong>
+                                        <strong>{{order.get_cart_total}}</strong>
                                     </div>
                                     <div id="paypal-button"></div>
                                     
@@ -136,105 +136,7 @@
 
                         </div>
                         <!-- address -->
-                        
-                        <!-- <button 
-                            type="submit" 
-                            class="btn btn-primary" 
-                        >Place order</button>
-                    </div>  -->
-
-                    <!-- Button trigger modal -->
-                    <!-- <button 
-                        type="button" 
-                        class="btn btn-primary trigger" 
-                        data-mdb-toggle="modal" 
-                        data-mdb-target="#payModal"
-                    >
-                        Next
-                    </button> -->
-                    
-                    <!--Pay Modal -->
-                    <!-- <div 
-                        class="modal fade" 
-                        id="payModal" 
-                        tabindex="-1" 
-                        aria-labelledby="payModalLabel" 
-                        aria-hidden="true"
-                    >
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="payModalLabel">Payment</h5>
-                                    <button 
-                                        type="button" 
-                                        class="btn-close" 
-                                        data-mdb-dismiss="modal" 
-                                        aria-label="Close"
-                                    ></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div id="paypal-button"></div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button 
-                                        type="button" 
-                                        class="btn btn-primary" 
-                                        data-mdb-dismiss="modal"
-                                    >Go back</button>
-                                    <button 
-                                        type="button" 
-                                        class="btn btn-primary" 
-                                        data-mdb-toggle="modal" 
-                                        data-mdb-target="#submitModal"
-                                    >
-                                        Next
-                                    </button>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
-                    <!--Submit Modal -->
-                    <!-- <div 
-                    class="modal fade" 
-                    id="submitModal" 
-                    tabindex="-1" 
-                    aria-labelledby="submitModalLabel" 
-                    aria-hidden="true"
-                >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="submitModalLabel">Successfully paid</h5>
-                                <button 
-                                    type="button" 
-                                    class="btn-close" 
-                                    data-mdb-dismiss="modal" 
-                                    aria-label="Close"
-                                ></button>
-                            </div>
-                            <div class="modal-body">
-                                <div id="complete-button"></div>
-                            </div>
-                            <div class="modal-footer">
-                                <button 
-                                    type="button" 
-                                    class="btn btn-primary" 
-                                    data-mdb-dismiss="modal"
-                                >Go back</button>
-                                <button 
-                                    type="submit" 
-                                    class="btn btn-primary" 
-                                    data-mdb-dismiss="modal"
-                                >Place order</button>
-
-                            </div>
-                        </div>
-                    </div>
-                    </div> -->
-                    <!-- Summary-->
-                    
+                    </div>  
                 </form>
 
             </div>
@@ -273,19 +175,17 @@
       return actions.payment.create({
         transactions: [{
           amount: {
-            total: {{order.get_cart_total|floatformat:2}},
+            total: {{order.get_cart_total}},
             currency: 'EUR'
           }
         }]
       });
     },
     // Execute the payment
-    onAuthorize: function(data, actions) {
+    onAuthorize: function(data, actions){
       return actions.payment.execute().then(function() {
         // Show a confirmation message to the buyer
         swal("Payment completed! Please make sure your address is filled and click place order! ")
-
-
       });
     }
   }, '#paypal-button');

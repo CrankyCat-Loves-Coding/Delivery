@@ -175,7 +175,9 @@ The live link can be found here [link](https://faddyduck-delivery.herokuapp.com/
 - Reference
 
   - [Welcome to django-allauth](https://django-allauth.readthedocs.io/en/latest/)
+  - [Model instance reference](https://docs.djangoproject.com/zh-hans/4.0/ref/models/instances/#str)
   - [Django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/install.html)
+  - [Django Forms with Django Crispy Forms](https://dontrepeatyourself.org/post/django-forms-django-crispy-forms/)
   - [BugBytes](https://www.youtube.com/channel/UCTwxaBjziKfy6y_uWu30orA)
   - [Dennis Ivy](https://www.youtube.com/c/DennisIvy)
   - [Legion Script](https://www.youtube.com/c/LegionScript)
