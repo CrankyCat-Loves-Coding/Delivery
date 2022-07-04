@@ -96,7 +96,7 @@
                                                     data-menu="{{ meals.id }}"
                                                     data-action="add"
                                                     type="button" 
-                                                    class="btn btn-light update-cart" 
+                                                    class="btn btn-light update-cart sweetalert" 
                                                     data-mdb-ripple-color="dark"
                                                     >
                                                     Add to Cart
@@ -171,7 +171,7 @@
                                                     data-menu="{{ desserts.id }}"
                                                     data-action="add"
                                                     type="button" 
-                                                    class="btn btn-light update-cart" 
+                                                    class="btn btn-light update-cart sweetalert" 
                                                     data-mdb-ripple-color="dark"
                                                 >
                                                     Add to Cart
@@ -246,7 +246,7 @@
                                                     data-menu="{{ drinks.id }}"
                                                     data-action="add"
                                                     type="button" 
-                                                    class="btn btn-light update-cart" 
+                                                    class="btn btn-light update-cart sweetalert" 
                                                     data-mdb-ripple-color="dark"
                                                 >
                                                     Add to Cart
@@ -264,7 +264,27 @@
                     <!--Section: Pills-->
                 </div>
             </div>
+
         </form>
     </div>
 </main>
+<script>
+    // document.getElementsByClassName('sweetalert').addEventListener('click',function(){
+    //     if(user === 'AnonymousUser'){
+    //         console.log('Not logged in ++')
+            
+    //     }
+    // })
+    var updateBtns = document.getElementsByClassName('sweetalert')
+
+    for(i = 0; i < updateBtns.length; i++){
+        updateBtns[i].addEventListener('click', function(){
+
+            if(user === 'AnonymousUser'){
+                console.log('Not logged in ++')
+                swal("Please login or register to place on order!");
+            }
+        })
+    }
+</script>
 {% endblock content %}
