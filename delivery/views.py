@@ -194,42 +194,6 @@ class Pay(View):
     def get(self, request, *args, **kwargs):
         return render(request, 'pay.html')
 
-# class Address(LoginRequiredMixin, View):
-
-#     def post(self, request, *args, **kwargs):
-#         full_name = request.POST.get('full_name')
-#         phone = request.POST.get('phone')
-#         email = request.POST.get('email')
-#         address = request.POST.get('address')
-#         eircode = request.POST.get('eircode')
-#         message = request.POST.get('message')
-
-#         address = OrderModel.objects.create (
-#             full_name=full_name,
-#             phone=phone,
-#             email=email,
-#             address=address,
-#             eircode=eircode,
-#             message=message,
-#         )
-
-#         body = (
-#             'Thank you for your order!'
-#             'Your food is being made and will be delivered soon!\n'
-#             f'Your total:{price}\n'
-
-#         )
-#         #send order confirmation
-#         send_mail(
-#             'Order confirmation',
-#             body,
-#             'j35306406@gmail.com',
-#             [email],
-#             fail_silently=False
-#         )
-
-#         return render(request, 'cart.html')
-
 
 class UpdateCart(View):
 

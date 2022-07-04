@@ -127,29 +127,34 @@
                                     {% crispy form %}
 
                                 </div>
+                                <button 
+                                    type="submit" 
+                                    class="btn btn-primary" 
+                                    data-mdb-dismiss="modal"
+                                >Place order</button>
                             </div>
 
                         </div>
                         <!-- address -->
                         
-                        <button 
+                        <!-- <button 
                             type="submit" 
                             class="btn btn-primary" 
                         >Place order</button>
-                    </div> 
+                    </div>  -->
 
                     <!-- Button trigger modal -->
-                    <button 
+                    <!-- <button 
                         type="button" 
                         class="btn btn-primary trigger" 
                         data-mdb-toggle="modal" 
                         data-mdb-target="#payModal"
                     >
                         Next
-                    </button>
+                    </button> -->
                     
                     <!--Pay Modal -->
-                    <div 
+                    <!-- <div 
                         class="modal fade" 
                         id="payModal" 
                         tabindex="-1" 
@@ -188,10 +193,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!--Submit Modal -->
-                    <div 
+                    <!-- <div 
                     class="modal fade" 
                     id="submitModal" 
                     tabindex="-1" 
@@ -227,7 +232,7 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                    </div> -->
                     <!-- Summary-->
                     
                 </form>
@@ -243,6 +248,7 @@
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
+
   paypal.Button.render({
     // Configure environment
     env: 'sandbox',
@@ -277,8 +283,8 @@
     onAuthorize: function(data, actions) {
       return actions.payment.execute().then(function() {
         // Show a confirmation message to the buyer
-        // window.location.href = '/order-pay-confirmation/'
-        alert("you have paid.")
+        swal("Payment completed! Please make sure your address is filled and click place order! ")
+
 
       });
     }

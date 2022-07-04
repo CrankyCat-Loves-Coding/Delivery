@@ -71,13 +71,9 @@ class OrderModel(models.Model):
     email = models.CharField(max_length=200, null=True)
     address = models.CharField(max_length=200, null=True)
     eircode = models.CharField(max_length=200, null=True)
-    is_paid = models.BooleanField(default=False)
-    items = models.ManyToManyField(
-        'Menu', related_name='order', blank=True
-    )
 
     def __str__(self):
-        return f'Order:{self.created_on.strftime("%b %d %I: %M %p")}'
+        return self.address
 
 
 
