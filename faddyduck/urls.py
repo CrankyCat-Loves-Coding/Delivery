@@ -16,15 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from delivery.views import Main, MenuItem, Cart, UpdateCart
-from delivery.views import Customer, Pay
+from delivery.views import Customer, Delete, User
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', Main.as_view(), name='index'),
     path('customer/', Customer.as_view(), name='customer'),
+    path('user/', User.as_view(), name='user'),
+    path('delete/', Delete.as_view(), name='delete'),
     path('menu/', MenuItem.as_view(), name='menu'),
     path('cart/', Cart.as_view(), name='cart'),
-    path('pay/', Pay.as_view(), name='pay'),
     path('update_cart/', UpdateCart.as_view(), name='update_cart'),
     path('accounts/', include('allauth.urls')),
 ]

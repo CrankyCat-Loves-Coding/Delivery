@@ -1,10 +1,31 @@
 {%  extends 'base.html' %}
-{% load static %}
 {% block content %}
   
 <!--Main layout-->
 <main class="box">
 	<div class="container pt-4">
+
+		<!-- Background image -->
+		<div
+			class="p-5 text-center bg-image"
+			style="
+				background-image: url('#');
+				height: 30px;
+				margin-top: 58px;"
+		>
+			<!-- <div class="mask" style="background-color: rgba(255, 255, 255, 0.1);">
+				<div class="d-flex justify-content-center align-items-center h-100">
+					<div class="text-dark">
+						<h1 class="mb-3">Fast delivery</h1>
+						<h4 class="mb-3">Enjoy your food</h4>
+						<a class="btn btn-outline-dark btn-lg" href="{% url 'menu' %}" role="button"
+						>Order Now</a>
+					</div>
+				</div>
+			</div> -->
+		</div>
+		<!-- Background image -->
+		
 		<!--Section: Minimal statistics cards-->
 		<section>
 			<div class="row">
@@ -96,13 +117,13 @@
 			<div class="card">
 				<div class="card-header text-center py-3">
 					<h5 class="mb-0 text-center">
-						<strong>Order History</strong>
+						<strong>Address</strong>
 					</h5>
 				</div>
-				<div class="card-body">
+				<div class="card-body text-center ">
 					<div class="table-responsive">
 						<table class="table table-hover text-nowrap">
-							<thead>
+							<!-- <thead>
 								<tr>
 									<th scope="col">Order Number</th>
 									<th scope="col">Order Date</th>
@@ -110,16 +131,12 @@
 									<th scope="col">Contact Number</th>
 									<th scope="col">Order Status</th>
 								</tr>
-							</thead>
+							</thead> -->
 							{% for i in customer %}
 							<tbody>
 
-								<tr>
-									<td>{{i.transaction_id}}</td>
-									<td>{{i.created_on}}</td>
+								<tr> 
 									<td>{{i.address}}</td>
-									<td>{{i.phone}}</td>
-									<td>{{i.status}}</td>
 								</tr>
 
 							</tbody>

@@ -82,6 +82,14 @@ class Customer(View):
 
         return render(request, 'customer.html', context)
 
+
+class Delete(View):
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+        return JsonResponse('Item was added', safe=False)
+
+
 # user(normal customer) view, profile and order info
 class User(LoginRequiredMixin, View):
 

@@ -23,12 +23,6 @@ function submitFormData(){
         'eircode':null,
     }
 
-    // if(shipping != 'False'){
-    //     shippingInfo.address = form.address.value
-    //     shippingInfo.email = form.email.value
-    //     shippingInfo.phone = form.phone.value
-    // }
-
     var url = '/process_order/'
 
     fetch(url, {
@@ -42,7 +36,5 @@ function submitFormData(){
     .then((response) => response.json())
     .then((data) => {
         console.log('Success:', data);
-        // alert('Transaction completed');
-        // window.location.href = "{% url 'index' %}"
     })
 }
