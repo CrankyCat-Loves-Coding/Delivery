@@ -1,26 +1,27 @@
 var total ='{{order.get_cart_total}}'
-var shipping = '{{order.shipping}}'
 var form = document.getElementById('form')
 
-//monitor click for make payment button
-// document.getElementById('make-payment').addEventListener('click',function(e){
-//     submitFormData()
-// })
+// monitor click for make payment button
+document.getElementsByClassName('make-payment').addEventListener('click',function(e){
+    submitFormData()
+})
+
 
 function submitFormData(){
     console.log('Payment button clicked....')
 
-    // var userFormData = {
-    //     'name':null,
-    //     'email':null,
-    //     'total':total,
-    // }
+    var userFormData = {
+        'name':null,
+        'phone':null,
+        'email':null,
+        'total':total,
+    }
 
-    // var shippingInfo = {
-    //     'address':null,
-    //     'email':null,
-    //     'phone':null,
-    // }
+    var shippingInfo = {
+        'address':null,
+        'email':null,
+        'eircode':null,
+    }
 
     // if(shipping != 'False'){
     //     shippingInfo.address = form.address.value
@@ -29,10 +30,11 @@ function submitFormData(){
     // }
 
     var url = '/process_order/'
+
     fetch(url, {
         method:'POST',
         headers:{
-            'content-type':'application/json',
+            'Content-Type':'application/json',
             'X-CSRFToken':csrftoken,
         },
         body:JSON.stringify({'form': userFormData, 'shipping': shippingInfo})

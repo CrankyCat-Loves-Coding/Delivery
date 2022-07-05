@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from delivery.views import Main, MenuItem, Cart, UpdateCart
-from delivery.views import OrderPayConfirmation, Customer, Pay
+from delivery.views import Customer, Pay
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,10 +26,5 @@ urlpatterns = [
     path('cart/', Cart.as_view(), name='cart'),
     path('pay/', Pay.as_view(), name='pay'),
     path('update_cart/', UpdateCart.as_view(), name='update_cart'),
-    path(
-        'order-pay-confirmation/',
-        OrderPayConfirmation.as_view(),
-        name='order-pay-confirmation'
-    ),
     path('accounts/', include('allauth.urls')),
 ]

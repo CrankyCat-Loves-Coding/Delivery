@@ -20,9 +20,9 @@ This website is built as my fourth portfolio for my coding course. It’s only f
 
 ### **1. Draft**
 
-- Initiate Planing
+- Initiate Planning
 
-![planing](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656885356/%E6%88%AA%E5%B1%8F2022-07-03_22.55.39_jxcp7t.jpg)
+![Planning](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656885356/%E6%88%AA%E5%B1%8F2022-07-03_22.55.39_jxcp7t.jpg)
 
     - Build a simple food delivery website that allows the owner exposes their business to any potential customers.
     - Proving business information such as address, contact and opening hours.
@@ -59,7 +59,7 @@ This website is built as my fourth portfolio for my coding course. It’s only f
   
   ![Sign out page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656889457/%E6%88%AA%E5%B1%8F2022-07-04_00.04.07_miyx3i.jpg)
 
-    - This is a confirmation page to the user confirming if they are happy to sign up. Othervise, they can go back to the home page by clicking BACK button.
+    - This is a confirmation page to the user confirming if they are happy to sign up. Otherwise, they can go back to the home page by clicking BACK button.
 
   - **Signed in page** 
   
@@ -89,62 +89,73 @@ This website is built as my fourth portfolio for my coding course. It’s only f
 
   - **Cart page**
   
-  ![cart page]()
+  ![cart page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656980491/%E6%88%AA%E5%B1%8F2022-07-05_01.21.13_vuzqfs.jpg)
+
+    - The cart page contain product information and linked to Paypal for online payment. The user also will provide delivery information via this page.
+    - Item will be removed if quantity is zero.
+    - Total item and total amount is calculated before payment.
+    - The user may choose to pay by Paypal or credit card.
+    - Once payment is collected, confirmation message will display.
+    - Order data will be sent to the back end once the user clicked place order button.
+
   - **Profile page**
   
-  ![profile page]()
+  ![profile page](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656981189/%E6%88%AA%E5%B1%8F2022-07-05_01.32.57_hpnv47.jpg)
+
+    - On the profile page, the user is able to find data of total orders, order delivered and pending orders.
+    - Table below will display order data, delivery address, contact number and order status.
+    - The user may login to this page by clicking their name on the top right.
+
 
 
 - Technology Stack
-
-  - HTML5
-  - CSS3
-  - Javascript
-  - [Gitpod/Github](https://github.com/CrankyCat-Loves-Coding)
-  - [W3C HTML Validation Service](https://validator.w3.org/#validate_by_input)
-  - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
-  - [Beautifytools Javascript Validator](https://beautifytools.com/javascript-validator.php)
   - [Font Awesome](https://fontawesome.com/)
   - [Google Fonts](https://fonts.google.com/)
   - [Heroku](https://heroku.com)
   - [Cloudinary](https://cloudinary.com/)
+  - [Mdbootstrap](https://mdbootstrap.com/)
 
 [Back to the top](#overview)
 
 ### 3. **Testing and Launch**
 
-- HTML validation
+ - Bug1: 
+ 
+ ![Bug 1:](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656981805/%E5%9B%BE%E7%89%87_1_sgzxbk.jpg)
+ 
+ Unable to load relevant data when given a different name in admin page, Category section. Fixed by setting context in the view.py as screenshot shown and in template/menu.html, loop as {% for meal in meals %}, data display with no issue when user set a category as meals. 
+ 
+ - Bug2: 
+ 
+ ![Bug 2: ](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656982062/%E5%9B%BE%E7%89%87_1_hkqp7v.png)[Statement: GET /place_order/ HTTP/1.1" 405 0 ]
+ 
+ The 405 Method Not Allowed error shouldn’t be confused with the 404 Not Found error. A 404 tells you that the requested URL couldn’t be found or that it was entered incorrectly. A 405 error message, on the other hand, confirms that the requested page does exist (and the URL was input correctly), but an unacceptable HTTP method was used to make the initial request. [Reference](https://kinsta.com/blog/405-method-not-allowed-error/). Fixed by ![debug](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656982067/2_jwbgav.png)
 
-  - No errors or warnings were found when passing through the official W3C validator.
+ - Bug3: 
+ 
+ ![Bug3:](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656982457/%E5%9B%BE%E7%89%87_1_guxeu9.jpg) 
+ 
+ [Statement: RelatedObjectDoesNotExist User has no customer.] Fixed via as per [Video](https://www.youtube.com/watch?v=Kc1Q_ayAeQk)
 
-- CSS validation
+ - Bug 4 
+ 
+ ![Bug 4:](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656982457/%E5%9B%BE%E7%89%87_1_guxeu9.jpg) 
+ 
+ [Statement: Errno 111 Connection refused ] fixed by added (EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend') in setting.py. [Reference](https://groups.google.com/g/django-oscar/c/kLfvDyDL47w)
 
-  - No errors or warnings were found when passing through the official Jigsaw validator.
+ - Bug 5 
+ 
+ ![Pending debug](https://res.cloudinary.com/dqj8itdfg/image/upload/v1656982781/%E5%9B%BE%E7%89%87_1_tnz8s5.jpg) 
+ 
+ [Statement: __str__ returned non-string (type NoneType)] pending to fix.
 
-- Accessibility
+ - Some other bugs: CSS file and Js seems unreliable after reverse DEBUG = False in setting.py. The website is either lost style or no responding to JS.
+ 
+ - Payment testing was done by using Paypal sandbox.
 
-  - The colors and fonts chosen are easy to read and accessaiible by running it through lighthouse in devtools.
-![Web Accessibility check](readme/lighthouse.jpg)
+- The project is considered as completed for phase 1. Is a simple website allowing essential business activities. 
 
-- Testing on devices and browsers
-  - There was no issue found when tested on iPhone7 device
 
-  ![Phone Test Result](readme/test-on-iphone7.png)
-  ![Phone Test Result](readme/phone-test.jpg)
-  - There was no issue found when tested on Ipad
-
-  ![Ipad Test Result](readme/test-on-ipad.png)
-  ![Ipad Test Result](readme/ipad-test.jpg)
-  - There was no issue found when tested the game in different browsers: 
-
-  Chrome
-
-  ![Chrome Test Result](readme/test-on-chrome.jpg)
-  ![Chrome Test Result](readme/chrome-test.jpg)
-  Safari
-  
-  ![Safari Test Result](readme/test-on-safari.jpg)
-  ![Safari Test Result](readme/safari-test.jpg)
 
 [Back to the top](#overview)
 

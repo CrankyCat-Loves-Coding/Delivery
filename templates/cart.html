@@ -9,140 +9,129 @@
     <!-- Table -->
     <div class="d-flex justify-content-center my-5">
         <div class="row col-md-10">
-            {% csrf_token %}
-            <table class="table table-striped">
-                <thead class="bg-light text-center">
-                  <tr>
-                    <th>Product</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                  </tr>
-                </thead>
-                {% for item in items %}
-                <tbody class="text-center align-middle">
+            <form id="form" class="blueForms" action="" method="POST">
+                {% csrf_token %}
+                <table class="table table-striped">
+                    <thead class="bg-light text-center">
                     <tr>
-                        <td>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <img
-                                    src="{{item.menu.image.url}}"
-                                    alt=""
-                                    class="rounded-circle item-image"
-                                />
-                            </div>
-                        </td>
-                        <td>
-                            <p class="fw-normal mb-1">{{item.menu.name}}</p>
-                        </td>
-                        <td>
-                            <span class="badge badge-success rounded-pill d-inline">€{{item.menu.price}}</span>
-                        </td>
-                        <td>
-                            <div class="btn-group btn-group-sm shadow-0" role="group">
-                                <button 
-                                    type="button" 
-                                    class="btn btn-light update-cart" 
-                                    data-mdb-ripple-color="dark"
-                                    data-menu={{item.menu.id}}
-                                    data-action="add"
+                        <th>Product</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    {% for item in items %}
+                    <tbody class="text-center align-middle">
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <img
+                                        src="{{item.menu.image.url}}"
+                                        alt=""
+                                        class="rounded-circle"
+                                        style="width: 100px; height: 100px"
+                                    />
+                                </div>
+                            </td>
+
+                            <td>
+                                <p class="fw-normal mb-1">{{item.menu.name}}</p>
+                            </td>
+                            <td>
+                                <span class="badge badge-success rounded-pill d-inline">€{{item.menu.price}}</span>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm shadow-0" role="group">
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-light update-cart" 
+                                        data-mdb-ripple-color="dark"
+                                        data-menu={{item.menu.id}}
+                                        data-action="add"
+                                    >
+                                        <i class="fa-solid fa-caret-up"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
+                                        {{item.quantity}}
+                                    </button>
+                                    <button 
+                                        type="button" 
+                                        class="btn btn-light update-cart" 
+                                        data-mdb-ripple-color="dark"
+                                        data-menu={{item.menu.id}}
+                                        data-action="remove"
+                                    >
+                                        <i class="fa-solid fa-caret-down"></i>
+                                    </button>
+                                </div>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                    {{item.get_total}}
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="row">
+
+                    <!-- order summary -->
+                    <div class="col-md-4 mb-4">
+
+                        <div class="card">
+                            <div class="card-body">
+                                        
+                                <div class="card-header bg-white text-center py-3">
+                                    <h5 class="mb-0 fw-bold">Summary</h5>
+                                </div>
+                    
+                                <div class="card-body">
+                                    <ul>
+                                        <li><strong>Total items: </strong>{{order.get_cart_items}}</li>
+                                    </ul>
+                                </div>
+                    
+                                <div
+                                    class="card-footer bg-white d-flex justify-content-between py-3"
                                 >
-                                    <i class="fa-solid fa-caret-up"></i>
-                                </button>
-                                <button type="button" class="btn btn-light" data-mdb-ripple-color="dark">
-                                    {{item.quantity}}
-                                </button>
-                                <button 
-                                    type="button" 
-                                    class="btn btn-light update-cart" 
-                                    data-mdb-ripple-color="dark"
-                                    data-menu={{item.menu.id}}
-                                    data-action="remove"
-                                >
-                                    <i class="fa-solid fa-caret-down"></i>
-                                </button>
+                                    <strong>Total amount:</strong>
+                                    <strong>{{order.get_cart_total}}</strong>
+                                </div>
+                                <div id="paypal-button" class="make-payment"></div>
+                                
+
                             </div>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-link btn-sm btn-rounded">
-                                {{item.get_total}}
-                            </button>
-                        </td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-            </table>
+                        </div>
+                    </div>
+                    <!-- order summary -->
+
+                    <!-- address -->
+                    <div class="col-md-8 mb-4">
+
+                        <div class="card">
+                            <div class="card-body">
+                                {% crispy form %}
+
+                            </div>
+                            <button 
+                                id="place-order"
+                                type="submit" 
+                                class="btn btn-primary mb-4" 
+                                data-mdb-dismiss="modal"
+                            >Place order</button>
+                        </div>
+
+                    </div>
+                    <!-- address -->
+
+                </div>  
+            </form> 
         </div>
     </div>
     <!-- Table -->
-
-    <!--Test Place order -->
-    <div class="d-flex justify-content-center my-5">
-        <div class="row col-md-10">
-            <div class="col-md-12 mb-4">
-
-                <form id="form" class="blueForms" action="" method="POST">
-                    {% csrf_token %}
-                    
-
-                    <div class="row">
-
-
-                        <!-- order summary -->
-                        <div class="col-md-4 mb-4">
-
-                            <div class="card">
-                                <div class="card-body">
-                                            
-                                    <div class="card-header bg-white text-center py-3">
-                                        <h5 class="mb-0 fw-bold">Summary</h5>
-                                    </div>
-                        
-                                    <div class="card-body">
-                                        <ul>
-                                            <li><strong>Total items: </strong>{{order.get_cart_items}}</li>
-                                        </ul>
-                                    </div>
-                        
-                                    <div
-                                        class="card-footer bg-white d-flex justify-content-between py-3"
-                                    >
-                                        <strong>Total amount:</strong>
-                                        <strong>{{order.get_cart_total}}</strong>
-                                    </div>
-                                    <div id="paypal-button"></div>
-                                    
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- order summary -->
-
-
-                        <!-- address -->
-                        <div class="col-md-8 mb-4">
-
-                            <div class="card">
-                                <div class="card-body">
-                                    {% crispy form %}
-
-                                </div>
-                                <button 
-                                    type="submit" 
-                                    class="btn btn-primary" 
-                                    data-mdb-dismiss="modal"
-                                >Place order</button>
-                            </div>
-
-                        </div>
-                        <!-- address -->
-                    </div>  
-                </form>
-
-            </div>
-        </div>
-    </div>
-    <!-- Test Place order -->
 
 </section>
 
@@ -150,6 +139,8 @@
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
+
+//   var placeOrderBtns = document.getElementById('place-order')
 
   paypal.Button.render({
     // Configure environment
@@ -182,7 +173,7 @@
       });
     },
     // Execute the payment
-    onAuthorize: function(data, actions){
+    onAuthorize: function (data, actions){
       return actions.payment.execute().then(function() {
         // Show a confirmation message to the buyer
         swal("Payment completed! Please make sure your address is filled and click place order! ")
@@ -193,3 +184,4 @@
 </script>
 
 {% endblock content %}
+

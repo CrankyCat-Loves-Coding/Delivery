@@ -112,22 +112,13 @@ class OrderModel(models.Model):
     )
 
     created_on = models.DateTimeField(auto_now_add=True, null=True)
-    transaction_id = models.CharField(max_length=100, null=True)
     name = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=200, null=True)
     email = models.CharField(max_length=200, null=True)
     address = models.CharField(max_length=200, null=True)
     eircode = models.CharField(max_length=200, null=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
+    complete = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'Order: {self.created_on.strftime("%b %d %I: %M %P")}'
-
-
-
-# def create_profile(sender, instance, created, *args, **kwargs):
-#     if not created:      # if user already exits then ignore
-#         return
-#     UserProfile.objects.create(user=instance)
-#     post_save.connect(create_profile, sender=User)
-
+        return str(self.id) 

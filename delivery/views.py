@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.views import View
 from .models import Menu, Order, OrderItem, OrderModel, Customer
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -9,7 +10,6 @@ from django.contrib import messages
 from .forms import CreateUserForm, AddressForm
 from django.core.mail import send_mail
 from datetime import datetime
-# from .decorators import allowed_users
 import json
 
 
@@ -18,7 +18,7 @@ class RegisterPage(View):
 
     def get(self, request, *args, **kwargs):
 
-        form = CreateUserForm()
+        form = CreateUserForm() 
 
         if request.method == 'POST':
             form = CreateUserForm(request.POST)
@@ -60,10 +60,9 @@ class LoginPage(View):
         return render(request, 'accounts/login.html', context)
 
 
-# customer/user view, profile and order info
-class Customer(LoginRequiredMixin, View):
-
-    # @allowed_users(allowed_roles=['admin'])
+# customer(staff) view, profile and order info
+class Customer(View):
+ 
     def get(self, request, *args, **kwargs):
 
         customer = OrderModel.objects.all()
@@ -83,6 +82,28 @@ class Customer(LoginRequiredMixin, View):
 
         return render(request, 'customer.html', context)
 
+# user(normal customer) view, profile and order info
+class User(LoginRequiredMixin, View):
+
+    def get(self, request, *args, **kwargs):
+
+        customer = OrderModel.objects.all()
+        total_orders = customer.count()
+        delivered = customer.filter(status='Delivered').count()
+        pending = customer.filter(status='Pending').count()
+
+        # using LoginRequiredMixin to restrict access
+        login_url = 'accounts/login.html'
+
+        context = {
+            'customer': customer,
+            'total_orders': total_orders,
+            'delivered': delivered,
+            'Pending': pending
+        }
+
+        return render(request, 'user.html', context)
+
 
 # main page (Home)
 class Main(View):
@@ -99,11 +120,6 @@ class Main(View):
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
-            #cartItems = order['get_cart_items']
-        
-        # context = {
-        #     'cartItems': cartItems
-        # }
 
         return render(request, 'index.html')
 
@@ -125,17 +141,14 @@ class MenuItem(View):
                 complete=False
             )
             items = order.orderitem_set.all()
-            # cartItems = order.get_cart_items
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
-            # cartItems = order['get_cart_items']
 
         context = {
             'meals': meals,
             'desserts': desserts,
             'drinks': drinks,
-            # 'cartItems': cartItems
         }
 
         return render(request, 'menu.html', context)
@@ -160,16 +173,14 @@ class Cart(LoginRequiredMixin, View):
                 complete=False
             )
             items = order.orderitem_set.all()
-            # cartItems = order.get_cart_items
+            
         else:
             items = []
             order = {'get_cart_total': 0, 'get_cart_item':0 }
-            # cartItems = or der['get_cart_items']
         
         context = {
             'items': items,
             'order': order,
-            # 'cartItems': cartItems
             'form': AddressForm()
         }
 
@@ -183,7 +194,7 @@ class Cart(LoginRequiredMixin, View):
         address = request.POST.get('address')
         eircode = request.POST.get('eircode')
 
-        order = OrderModel.objects.create (
+        order = OrderModel.objects.create(
             name=name,
             phone=phone,
             email=email,
@@ -194,13 +205,12 @@ class Cart(LoginRequiredMixin, View):
         body = (
             'Thank you for your order!'
             'Your food is being made and will be delivered soon!\n'           
-
         )
         #send order confirmation
         send_mail(
             'Order confirmation',
             body,
-            'j35306406@gmail.com',
+            'example@fuddyduck.com',
             [email],
             fail_silently=False
         )
@@ -253,50 +263,3 @@ class UpdateCart(View):
             orderItem.delete()
 
         return JsonResponse('Item was added', safe=False)
-
-
-def processOrder(request):
-
-    transaction_id = datetime.datetime.now().timestamp()
-    data = json.loads(request.body)
-
-    total = float(data['form']['total'])
-    order.transaction_id = transaction_id
-
-    if total == float(order.get_cart_total):
-        order.complete = True
-    order.save()
-
-    return JsonResponse('cleared cart', safe=False)
-
-
-# class OrderConfirmation(View):
-
-#     def get(self, request, pk, *args, **kwargs):
-#         order = Menu.objects.get(pk=pk)
-
-#         context = {
-#             'pk': order.pk,
-#             'price': order.price
-#         }
-#         return render(request, 'order_confirmation.html', context)
-
-#     def post(self, request, pk, *args, **kwargs):
-#         print(request.body)
-
-
-# not uesed view page !!!!!!
-class OrderPayConfirmation(View):
-    def get(self, request, *args, **kwargs):
-        return render(request, 'order-pay-confirmation.html')
-
-
-class userPage(LoginRequiredMixin, View):
-
-    def get(self, request, *args, **kwargs):
-        orders = request.user.customer.order_set.all()
-        print('ORDERS:', orders)
-
-
-        context = {'orders': orders}
-        return render(request, 'accounts/user.html', context)
